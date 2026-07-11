@@ -1,0 +1,56 @@
+info:
+  name: Edit
+  type: http
+  seq: 3
+  tags:
+    - Hospital Management/Hospital Dynamic Content/Hero Section
+
+http:
+  method: PUT
+  url: "{{baseUrl}}hospital/hero-data/HID00001"
+  body:
+    type: json
+    data: '"{\r\n    \"hospital\": 1,\r\n    \"header_name\": \"sukhakarta\",\r\n    \"header_description\": \"sdfghjk\",\r\n    \"logo\": \"/media/hospital_logos/l.jpg\",\r\n    \"hero_name\": \"ghjk\",\r\n    \"hero_description\": \"hjkhjk\",\r\n    \"image_1\": null,\r\n    \"image_2\": null,\r\n    \"image_3\": null,\r\n    \"title\": null,\r\n    \"main_description\": null,\r\n    \"number_1\": null,\r\n    \"label_1\": null,\r\n    \"number_2\": null,\r\n    \"label_2\": null,\r\n    \"number_3\": null,\r\n    \"label_3\": null,\r\n    \"number_4\": null,\r\n    \"label_4\": null,\r\n    \"main_section_img\": null\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/hero-data/HID00001"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n    \"hospital\": 1,\r\n    \"header_name\": \"sukhakarta\",\r\n    \"header_description\": \"sdfghjk\",\r\n    \"logo\": \"/media/hospital_logos/l.jpg\",\r\n    \"hero_name\": \"ghjk\",\r\n    \"hero_description\": \"hjkhjk\",\r\n    \"image_1\": null,\r\n    \"image_2\": null,\r\n    \"image_3\": null,\r\n    \"title\": null,\r\n    \"main_description\": null,\r\n    \"number_1\": null,\r\n    \"label_1\": null,\r\n    \"number_2\": null,\r\n    \"label_2\": null,\r\n    \"number_3\": null,\r\n    \"label_3\": null,\r\n    \"number_4\": null,\r\n    \"label_4\": null,\r\n    \"main_section_img\": null\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/hero-data/HID00001"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n    \"hospital\": 1,\r\n    \"header_name\": \"sukhakarta\",\r\n    \"header_description\": \"sdfghjk\",\r\n    \"logo\": \"/media/hospital_logos/l.jpg\",\r\n    \"hero_name\": \"ghjk\",\r\n    \"hero_description\": \"hjkhjk\",\r\n    \"image_1\": null,\r\n    \"image_2\": null,\r\n    \"image_3\": null,\r\n    \"title\": null,\r\n    \"main_description\": null,\r\n    \"number_1\": null,\r\n    \"label_1\": null,\r\n    \"number_2\": null,\r\n    \"label_2\": null,\r\n    \"number_3\": null,\r\n    \"label_3\": null,\r\n    \"number_4\": null,\r\n    \"label_4\": null,\r\n    \"main_section_img\": null\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

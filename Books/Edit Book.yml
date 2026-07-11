@@ -1,0 +1,56 @@
+info:
+  name: Edit Book
+  type: http
+  seq: 3
+  tags:
+    - Books
+
+http:
+  method: PUT
+  url: "{{baseUrl}}books/1/"
+  body:
+    type: json
+    data: '"{\r\n    \"name\": \"sdfghjkl\",\r\n\t\t\"version\": \"1.0\",\r\n\t\t\"author\": \"John Doe\",\r\n\t\t\"code_sets\": [\r\n\t\t\t{\r\n\t\t\t\t\"name\": \"Django\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"name\": \"Python\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"name\": \"REST API\"\r\n\t\t\t}\r\n\t\t]\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}books/1/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n    \"name\": \"sdfghjkl\",\r\n\t\t\"version\": \"1.0\",\r\n\t\t\"author\": \"John Doe\",\r\n\t\t\"code_sets\": [\r\n\t\t\t{\r\n\t\t\t\t\"name\": \"Django\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"name\": \"Python\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"name\": \"REST API\"\r\n\t\t\t}\r\n\t\t]\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}books/1/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n    \"name\": \"sdfghjkl\",\r\n\t\t\"version\": \"1.0\",\r\n\t\t\"author\": \"John Doe\",\r\n\t\t\"code_sets\": [\r\n\t\t\t{\r\n\t\t\t\t\"name\": \"Django\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"name\": \"Python\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"name\": \"REST API\"\r\n\t\t\t}\r\n\t\t]\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

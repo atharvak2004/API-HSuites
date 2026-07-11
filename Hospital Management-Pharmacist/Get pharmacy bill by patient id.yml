@@ -1,0 +1,68 @@
+info:
+  name: Get pharmacy bill by patient id
+  type: http
+  seq: 4
+  tags:
+    - Hospital Management/Pharmacist
+
+http:
+  method: GET
+  url: "{{baseUrl}}hospital/prescriptions/with-bills/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  params:
+    - name: patient_id
+      value: "34"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/prescriptions/with-bills/"
+      method: GET
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      params:
+        - name: patient_id
+          value: "34"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/prescriptions/with-bills/"
+      method: GET
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      params:
+        - name: patient_id
+          value: "34"
+          type: query
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,65 @@
+info:
+  name: Update Finding
+  type: http
+  seq: 3
+  tags:
+    - Hospital Management/Finding
+
+http:
+  method: PUT
+  url: "{{baseUrl}}hospital/findings/update/11/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n    \"patient\": 26,\r\n    // \"date\": \"2025-06-14\",\r\n    \"temperature\": 98.6,\r\n    \"pulse\": 75,\r\n    \"blood_pressure\": \"120/80\",\r\n    \"weight\": 65.0,\r\n    \"height\": 160.0,\r\n    \"cns\": \"Normal\",\r\n    \"rs\": \"no\",\r\n    \"pa\": \"no\",\r\n    \"wbc\": \"6200\",\r\n    \"rbc\": \"4.5 million\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/findings/update/11/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    \"patient\": 26,\r\n    // \"date\": \"2025-06-14\",\r\n    \"temperature\": 98.6,\r\n    \"pulse\": 75,\r\n    \"blood_pressure\": \"120/80\",\r\n    \"weight\": 65.0,\r\n    \"height\": 160.0,\r\n    \"cns\": \"Normal\",\r\n    \"rs\": \"no\",\r\n    \"pa\": \"no\",\r\n    \"wbc\": \"6200\",\r\n    \"rbc\": \"4.5 million\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/findings/update/11/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    \"patient\": 26,\r\n    // \"date\": \"2025-06-14\",\r\n    \"temperature\": 98.6,\r\n    \"pulse\": 75,\r\n    \"blood_pressure\": \"120/80\",\r\n    \"weight\": 65.0,\r\n    \"height\": 160.0,\r\n    \"cns\": \"Normal\",\r\n    \"rs\": \"no\",\r\n    \"pa\": \"no\",\r\n    \"wbc\": \"6200\",\r\n    \"rbc\": \"4.5 million\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

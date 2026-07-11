@@ -1,0 +1,7 @@
+info:
+  name: Hospital Management/Pharmacist/Pharmacy Stock
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

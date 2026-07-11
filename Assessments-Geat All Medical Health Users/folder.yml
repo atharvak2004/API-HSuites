@@ -1,0 +1,7 @@
+info:
+  name: Assessments/Geat All Medical Health Users
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

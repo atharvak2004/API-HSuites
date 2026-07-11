@@ -1,0 +1,7 @@
+info:
+  name: Counselling/Therapy
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

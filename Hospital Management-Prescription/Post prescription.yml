@@ -1,0 +1,187 @@
+info:
+  name: Post prescription
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Prescription
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/prescription/"
+  headers:
+    - name: Hospital-Id
+      value: HID00001
+  body:
+    type: multipart-form
+    data:
+      - name: patient
+        type: text
+        value: "1"
+      - name: user
+        type: text
+        value: "2"
+      - name: notes
+        type: text
+        value: test
+      - name: image
+        type: file
+        value: []
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/prescription/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: multipart-form
+        data:
+          - name: patient
+            type: text
+            value: "1"
+          - name: user
+            type: text
+            value: "2"
+          - name: notes
+            type: text
+            value: test
+          - name: image
+            type: file
+            value: []
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "Prescription created successfully.",
+          	"prescription": {
+          		"id": 61,
+          		"items": [
+          			{
+          				"id": 70,
+          				"medicine_name": "Paracetamol",
+          				"dosage": "500mg",
+          				"duration_days": 5,
+          				"instruction": "After food",
+          				"quantity": 10,
+          				"amount": "50.00",
+          				"prescription": 61
+          			},
+          			{
+          				"id": 71,
+          				"medicine_name": "Antibiotic",
+          				"dosage": "250mg",
+          				"duration_days": 3,
+          				"instruction": "Before breakfast",
+          				"quantity": 6,
+          				"amount": "120.00",
+          				"prescription": 61
+          			}
+          		],
+          		"patient": {
+          			"id": 37,
+          			"known_allergies": [],
+          			"age": 22,
+          			"patient_id": "PA00037",
+          			"full_name": "Gayatri Annasaheb Rajguru",
+          			"gender": "Female",
+          			"dob": "2002-07-25",
+          			"relative_name": null,
+          			"contact_number": "7387568749",
+          			"email": "admin@sancheti.com",
+          			"emergency_contact_number": "9988776655",
+          			"address": "Flat No 401, Vrindavan Society\nNear Samindradevi Market,\nBAIF Road, Wagholi, Pune MH - 412207",
+          			"blood_group": "B+",
+          			"medical_history": null,
+          			"visit_count": 9,
+          			"date": "2025-07-07T16:01:59.405850+05:30",
+          			"is_active_patient": true,
+          			"hospital": 2
+          		},
+          		"date_issued": "2025-07-18T12:37:24.637554+05:30",
+          		"notes": "Follow-up after 5 days",
+          		"date_time": "2025-07-18T12:37:24.637554+05:30",
+          		"total_amount": "170.00",
+          		"payment_mode": null,
+          		"status": "unpaid",
+          		"hospital": 2,
+          		"user": 16
+          	},
+          	"items": [
+          		{
+          			"id": 70,
+          			"medicine_name": "Paracetamol",
+          			"dosage": "500mg",
+          			"duration_days": 5,
+          			"instruction": "After food",
+          			"quantity": 10,
+          			"amount": "50.00",
+          			"prescription": 61
+          		},
+          		{
+          			"id": 71,
+          			"medicine_name": "Antibiotic",
+          			"dosage": "250mg",
+          			"duration_days": 3,
+          			"instruction": "Before breakfast",
+          			"quantity": 6,
+          			"amount": "120.00",
+          			"prescription": 61
+          		}
+          	],
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210"
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/prescription/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: multipart-form
+        data:
+          - name: patient
+            type: text
+            value: "1"
+          - name: user
+            type: text
+            value: "2"
+          - name: notes
+            type: text
+            value: test
+          - name: image
+            type: file
+            value: []
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

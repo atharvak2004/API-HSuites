@@ -1,0 +1,56 @@
+info:
+  name: Add quiz name
+  type: http
+  seq: 1
+  tags:
+    - Assessments/Personality Assessments
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/quiz-name/"
+  body:
+    type: json
+    data: '"{\r\n    \"quiz_name\": \"Statement based Questions\",\r\n    \"quiz_description\":\"first quiz rrrrrrrrrname discription\",\r\n    \"category_1\": \"Physdwerffsics\",\r\n    \"category_2\": \"Chemisswdefrwdefrstry\",\r\n    \"category_3\": \"Biolwedwedrffrgogy\",\r\n    \"category_4\": \"Astrowewedfrdrfnomy\",\r\n    \"type\": \"statement-based\"\r\n}\r\n\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/quiz-name/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"quiz_name\": \"Statement based Questions\",\r\n    \"quiz_description\":\"first quiz rrrrrrrrrname discription\",\r\n    \"category_1\": \"Physdwerffsics\",\r\n    \"category_2\": \"Chemisswdefrwdefrstry\",\r\n    \"category_3\": \"Biolwedwedrffrgogy\",\r\n    \"category_4\": \"Astrowewedfrdrfnomy\",\r\n    \"type\": \"statement-based\"\r\n}\r\n\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/quiz-name/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"quiz_name\": \"Statement based Questions\",\r\n    \"quiz_description\":\"first quiz rrrrrrrrrname discription\",\r\n    \"category_1\": \"Physdwerffsics\",\r\n    \"category_2\": \"Chemisswdefrwdefrstry\",\r\n    \"category_3\": \"Biolwedwedrffrgogy\",\r\n    \"category_4\": \"Astrowewedfrdrfnomy\",\r\n    \"type\": \"statement-based\"\r\n}\r\n\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

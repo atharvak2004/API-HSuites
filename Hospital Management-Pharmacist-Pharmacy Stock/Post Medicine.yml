@@ -1,0 +1,86 @@
+info:
+  name: Post Medicine
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Pharmacist/Pharmacy Stock
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/pharmacy/medicine/"
+  headers:
+    - name: Hospital-Id
+      value: HID00001
+  body:
+    type: json
+    data: '"{\r\n  \"medicine_name\": \"paractamol\",\r\n  \"medicine_type\": \"tablet\",\r\n  \"medicine_unit\": \"mg\",\r\n  \"manufacturer\": \"Cipla\",\r\n  \"is_narcotic\": false,\r\n  \"description\": \"Used for fever and mild pain.\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/pharmacy/medicine/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"{\r\n  \"medicine_name\": \"paractamol\",\r\n  \"medicine_type\": \"tablet\",\r\n  \"medicine_unit\": \"mg\",\r\n  \"manufacturer\": \"Cipla\",\r\n  \"is_narcotic\": false,\r\n  \"description\": \"Used for fever and mild pain.\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "Pharmacy medicine created successfully.",
+          	"data": {
+          		"id": 2,
+          		"medicine_name": "Paracetamol1",
+          		"medicine_type": "tablet",
+          		"medicine_unit": "mg",
+          		"manufacturer": "Cipla",
+          		"is_narcotic": false,
+          		"description": "Used for fever and mild pain.",
+          		"hospital": 2
+          	},
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210"
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/pharmacy/medicine/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"{\r\n  \"medicine_name\": \"paractamol\",\r\n  \"medicine_type\": \"tablet\",\r\n  \"medicine_unit\": \"mg\",\r\n  \"manufacturer\": \"Cipla\",\r\n  \"is_narcotic\": false,\r\n  \"description\": \"Used for fever and mild pain.\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

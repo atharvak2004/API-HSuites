@@ -1,0 +1,128 @@
+info:
+  name: Update Doctor profile
+  type: http
+  seq: 11
+  tags:
+    - Hospital Management/HMS User
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}hospital/hmsuser/doctor-profile/update/16/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: multipart-form
+    data:
+      - name: phone_number
+        type: text
+        value: "7894561230"
+      - name: gender
+        type: text
+        value: female
+      - name: dob
+        type: text
+        value: 1980-05-15
+      - name: qualification
+        type: text
+        value: MD
+      - name: specialization
+        type: text
+        value: Cardiology
+      - name: experience_years
+        type: text
+        value: "15"
+      - name: photo
+        type: file
+        value: []
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/hmsuser/doctor-profile/update/16/"
+      method: PATCH
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: multipart-form
+        data:
+          - name: phone_number
+            type: text
+            value: "7894561230"
+          - name: gender
+            type: text
+            value: female
+          - name: dob
+            type: text
+            value: 1980-05-15
+          - name: qualification
+            type: text
+            value: MD
+          - name: specialization
+            type: text
+            value: Cardiology
+          - name: experience_years
+            type: text
+            value: "15"
+          - name: photo
+            type: file
+            value: []
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/hmsuser/doctor-profile/update/16/"
+      method: PATCH
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: multipart-form
+        data:
+          - name: phone_number
+            type: text
+            value: "7894561230"
+          - name: gender
+            type: text
+            value: female
+          - name: dob
+            type: text
+            value: 1980-05-15
+          - name: qualification
+            type: text
+            value: MD
+          - name: specialization
+            type: text
+            value: Cardiology
+          - name: experience_years
+            type: text
+            value: "15"
+          - name: photo
+            type: file
+            value: []
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

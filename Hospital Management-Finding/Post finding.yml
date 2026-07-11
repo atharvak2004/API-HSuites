@@ -1,0 +1,93 @@
+info:
+  name: Post finding
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Finding
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/finding/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n    \"patient\": 37,\r\n    // \"date\": \"2025-06-14\",\r\n    \"temperature\": 98.6,\r\n    \"pulse\": 75,\r\n    \"blood_pressure\": \"120/80\",\r\n    \"weight\": 65.0,\r\n    \"height\": 170.0,\r\n    \"cns\": \"Normal\",\r\n    \"rs\": \"Clear\",\r\n    \"pa\": \"Soft\",\r\n    \"wbc\": \"6000\",\r\n    \"rbc\": \"4.5 million\",\r\n    \"note\":\"testing finding\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/finding/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    \"patient\": 37,\r\n    // \"date\": \"2025-06-14\",\r\n    \"temperature\": 98.6,\r\n    \"pulse\": 75,\r\n    \"blood_pressure\": \"120/80\",\r\n    \"weight\": 65.0,\r\n    \"height\": 170.0,\r\n    \"cns\": \"Normal\",\r\n    \"rs\": \"Clear\",\r\n    \"pa\": \"Soft\",\r\n    \"wbc\": \"6000\",\r\n    \"rbc\": \"4.5 million\",\r\n    \"note\":\"testing finding\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "Findings record created successfully",
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210"
+          	},
+          	"data": {
+          		"id": 26,
+          		"date": "2025-07-15T14:59:19.535130+05:30",
+          		"note": "testing finding",
+          		"temperature": 98.6,
+          		"pulse": 75,
+          		"blood_pressure": "120/80",
+          		"weight": 65,
+          		"height": 170,
+          		"cns": "Normal",
+          		"rs": "Clear",
+          		"pa": "Soft",
+          		"wbc": "6000",
+          		"rbc": "4.5 million",
+          		"hospital": 2,
+          		"patient": 37
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/finding/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    \"patient\": 37,\r\n    // \"date\": \"2025-06-14\",\r\n    \"temperature\": 98.6,\r\n    \"pulse\": 75,\r\n    \"blood_pressure\": \"120/80\",\r\n    \"weight\": 65.0,\r\n    \"height\": 170.0,\r\n    \"cns\": \"Normal\",\r\n    \"rs\": \"Clear\",\r\n    \"pa\": \"Soft\",\r\n    \"wbc\": \"6000\",\r\n    \"rbc\": \"4.5 million\",\r\n    \"note\":\"testing finding\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

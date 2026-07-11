@@ -1,0 +1,56 @@
+info:
+  name: Verify OTP (POST)
+  type: http
+  seq: 2
+  tags:
+    - Assessments/Login & Registration
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/verify-otp/"
+  body:
+    type: json
+    data: '"{\r\n    \"user_id\": 3,\r\n    \"otp\": 1111\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/verify-otp/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"user_id\": 3,\r\n    \"otp\": 1111\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/verify-otp/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"user_id\": 3,\r\n    \"otp\": 1111\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

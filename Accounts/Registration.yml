@@ -1,0 +1,56 @@
+info:
+  name: Registration
+  type: http
+  seq: 1
+  tags:
+    - Accounts
+
+http:
+  method: POST
+  url: "{{baseUrl}}accounts/register"
+  body:
+    type: json
+    data: '"{\r\n    \"email\": \"codingadmin@gmail.com\",\r\n    \"username\": \"codingAdmin\",\r\n    \"password\": \"password\",\r\n    // \"role\": \"Counsellor\"  \r\n    \"role\": \"Admin\"   \r\n} "'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}accounts/register"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"email\": \"codingadmin@gmail.com\",\r\n    \"username\": \"codingAdmin\",\r\n    \"password\": \"password\",\r\n    // \"role\": \"Counsellor\"  \r\n    \"role\": \"Admin\"   \r\n} "'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}accounts/register"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"email\": \"codingadmin@gmail.com\",\r\n    \"username\": \"codingAdmin\",\r\n    \"password\": \"password\",\r\n    // \"role\": \"Counsellor\"  \r\n    \"role\": \"Admin\"   \r\n} "'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

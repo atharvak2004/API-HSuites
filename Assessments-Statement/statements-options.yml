@@ -1,0 +1,56 @@
+info:
+  name: statements-options
+  type: http
+  seq: 1
+  tags:
+    - Assessments/Statement
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/statements-options-add/"
+  body:
+    type: json
+    data: '"[\r\n    {\r\n        \"logical\": \"I follow a structured approach to solving problems.\",\r\n        \"analytical\": \"I break down problems into smaller parts before solving them.\",\r\n        \"strategic\": \"I consider long-term outcomes when making decisions.\",\r\n        \"thinking\": \"I rely on intuition and experience to navigate challenges.\"\r\n    },\r\n    {\r\n        \"logical\": \"I prefer rules and frameworks to guide my actions.\",\r\n        \"analytical\": \"I like to analyze data before taking action.\",\r\n        \"strategic\": \"I think ahead and plan for future scenarios.\",\r\n        \"thinking\": \"I trust my instincts when making important choices.\"\r\n    },\r\n    {\r\n        \"logical\": \"I focus on efficiency and accuracy in my work.\",\r\n        \"analytical\": \"I evaluate different perspectives before reaching conclusions.\",\r\n        \"strategic\": \"I align my decisions with long-term objectives.\",\r\n        \"thinking\": \"I explore unconventional solutions to problems.\"\r\n    },\r\n    {\r\n        \"logical\": \"I rely on step-by-step reasoning to understand complex topics.\",\r\n        \"analytical\": \"I look for patterns and trends in information.\",\r\n        \"strategic\": \"I assess risks before committing to a plan.\",\r\n        \"thinking\": \"I embrace creativity when solving problems.\"\r\n    },\r\n    {\r\n        \"logical\": \"I prefer concrete facts over abstract ideas.\",\r\n        \"analytical\": \"I critically examine information before forming an opinion.\",\r\n        \"strategic\": \"I anticipate obstacles and prepare alternatives.\",\r\n        \"thinking\": \"I am open to exploring new possibilities without constraints.\"\r\n    }\r\n]\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/statements-options-add/"
+      method: POST
+      body:
+        type: json
+        data: '"[\r\n    {\r\n        \"logical\": \"I follow a structured approach to solving problems.\",\r\n        \"analytical\": \"I break down problems into smaller parts before solving them.\",\r\n        \"strategic\": \"I consider long-term outcomes when making decisions.\",\r\n        \"thinking\": \"I rely on intuition and experience to navigate challenges.\"\r\n    },\r\n    {\r\n        \"logical\": \"I prefer rules and frameworks to guide my actions.\",\r\n        \"analytical\": \"I like to analyze data before taking action.\",\r\n        \"strategic\": \"I think ahead and plan for future scenarios.\",\r\n        \"thinking\": \"I trust my instincts when making important choices.\"\r\n    },\r\n    {\r\n        \"logical\": \"I focus on efficiency and accuracy in my work.\",\r\n        \"analytical\": \"I evaluate different perspectives before reaching conclusions.\",\r\n        \"strategic\": \"I align my decisions with long-term objectives.\",\r\n        \"thinking\": \"I explore unconventional solutions to problems.\"\r\n    },\r\n    {\r\n        \"logical\": \"I rely on step-by-step reasoning to understand complex topics.\",\r\n        \"analytical\": \"I look for patterns and trends in information.\",\r\n        \"strategic\": \"I assess risks before committing to a plan.\",\r\n        \"thinking\": \"I embrace creativity when solving problems.\"\r\n    },\r\n    {\r\n        \"logical\": \"I prefer concrete facts over abstract ideas.\",\r\n        \"analytical\": \"I critically examine information before forming an opinion.\",\r\n        \"strategic\": \"I anticipate obstacles and prepare alternatives.\",\r\n        \"thinking\": \"I am open to exploring new possibilities without constraints.\"\r\n    }\r\n]\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/statements-options-add/"
+      method: POST
+      body:
+        type: json
+        data: '"[\r\n    {\r\n        \"logical\": \"I follow a structured approach to solving problems.\",\r\n        \"analytical\": \"I break down problems into smaller parts before solving them.\",\r\n        \"strategic\": \"I consider long-term outcomes when making decisions.\",\r\n        \"thinking\": \"I rely on intuition and experience to navigate challenges.\"\r\n    },\r\n    {\r\n        \"logical\": \"I prefer rules and frameworks to guide my actions.\",\r\n        \"analytical\": \"I like to analyze data before taking action.\",\r\n        \"strategic\": \"I think ahead and plan for future scenarios.\",\r\n        \"thinking\": \"I trust my instincts when making important choices.\"\r\n    },\r\n    {\r\n        \"logical\": \"I focus on efficiency and accuracy in my work.\",\r\n        \"analytical\": \"I evaluate different perspectives before reaching conclusions.\",\r\n        \"strategic\": \"I align my decisions with long-term objectives.\",\r\n        \"thinking\": \"I explore unconventional solutions to problems.\"\r\n    },\r\n    {\r\n        \"logical\": \"I rely on step-by-step reasoning to understand complex topics.\",\r\n        \"analytical\": \"I look for patterns and trends in information.\",\r\n        \"strategic\": \"I assess risks before committing to a plan.\",\r\n        \"thinking\": \"I embrace creativity when solving problems.\"\r\n    },\r\n    {\r\n        \"logical\": \"I prefer concrete facts over abstract ideas.\",\r\n        \"analytical\": \"I critically examine information before forming an opinion.\",\r\n        \"strategic\": \"I anticipate obstacles and prepare alternatives.\",\r\n        \"thinking\": \"I am open to exploring new possibilities without constraints.\"\r\n    }\r\n]\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

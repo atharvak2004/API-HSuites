@@ -1,0 +1,68 @@
+info:
+  name: Get all invoice
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Bill /Invoice
+
+http:
+  method: GET
+  url: "{{baseUrl}}hospital/invoices/"
+  headers:
+    - name: Hospital-Id
+      value: HID00001
+  params:
+    - name: search
+      value: Rah
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/invoices/"
+      method: GET
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      params:
+        - name: search
+          value: Rah
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/invoices/"
+      method: GET
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      params:
+        - name: search
+          value: Rah
+          type: query
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

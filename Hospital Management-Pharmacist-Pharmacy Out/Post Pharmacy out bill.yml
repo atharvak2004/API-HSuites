@@ -1,0 +1,98 @@
+info:
+  name: Post Pharmacy out bill
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Pharmacist/Pharmacy Out
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/pharmacy/out-bill/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n    \"patient_name\": \"Gayatri\",\r\n    \"note\": \"Urgent fever medicines2\",\r\n    \"medicine_items\": [\r\n        {\r\n            \"name\": \"wf\",\r\n            \"dosage\": \"60mg\",\r\n            \"duration\": \"4days\",\r\n            \"quantity\": 5\r\n        }\r\n    ]\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/pharmacy/out-bill/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    \"patient_name\": \"Gayatri\",\r\n    \"note\": \"Urgent fever medicines2\",\r\n    \"medicine_items\": [\r\n        {\r\n            \"name\": \"wf\",\r\n            \"dosage\": \"60mg\",\r\n            \"duration\": \"4days\",\r\n            \"quantity\": 5\r\n        }\r\n    ]\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "Pharmacy out-patient bill created successfully",
+          	"bill": {
+          		"id": 3,
+          		"hospital": 2,
+          		"patient_name": "Gayatri",
+          		"note": "Urgent fever medicines2",
+          		"medicine_items": [
+          			{
+          				"name": "wf",
+          				"dosage": "60mg",
+          				"amount": 35,
+          				"duration": "4days",
+          				"quantity": 5
+          			}
+          		],
+          		"total_amount": "175.00",
+          		"payment_status": "unpaid",
+          		"payment_mode": null,
+          		"payment_date": null,
+          		"created_at": "2025-08-06T13:30:48.951296+05:30"
+          	},
+          	"total_amount": 175,
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210",
+          		"logo": "/media/hospital_logos/i.png"
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/pharmacy/out-bill/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    \"patient_name\": \"Gayatri\",\r\n    \"note\": \"Urgent fever medicines2\",\r\n    \"medicine_items\": [\r\n        {\r\n            \"name\": \"wf\",\r\n            \"dosage\": \"60mg\",\r\n            \"duration\": \"4days\",\r\n            \"quantity\": 5\r\n        }\r\n    ]\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

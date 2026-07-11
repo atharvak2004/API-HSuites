@@ -1,0 +1,86 @@
+info:
+  name: Post Suppliers
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Pharmacist
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/supplier/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"supplier_name\": \"Global Med Pharma2\",\r\n  \"contact\": \"9876543210\",\r\n  \"email\": \"globalmed@example.com\",\r\n  \"address\": \"123 Pharma St, Pune\",\r\n  \"purchase_date\": \"2025-07-17\",\r\n  \"purchase_price\": \"25000.00\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/supplier/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"supplier_name\": \"Global Med Pharma2\",\r\n  \"contact\": \"9876543210\",\r\n  \"email\": \"globalmed@example.com\",\r\n  \"address\": \"123 Pharma St, Pune\",\r\n  \"purchase_date\": \"2025-07-17\",\r\n  \"purchase_price\": \"25000.00\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "Supplier added successfully.",
+          	"data": {
+          		"id": 4,
+          		"supplier_name": "Global Med Pharma2",
+          		"contact": "9876543210",
+          		"email": "globalmed@example.com",
+          		"address": "123 Pharma St, Pune",
+          		"purchase_date": "2025-07-17T00:00:00+05:30",
+          		"purchase_price": "25000.00",
+          		"hospital": 2
+          	},
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210"
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/supplier/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"supplier_name\": \"Global Med Pharma2\",\r\n  \"contact\": \"9876543210\",\r\n  \"email\": \"globalmed@example.com\",\r\n  \"address\": \"123 Pharma St, Pune\",\r\n  \"purchase_date\": \"2025-07-17\",\r\n  \"purchase_price\": \"25000.00\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

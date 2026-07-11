@@ -1,0 +1,4 @@
+name: Mock Environment
+variables:
+  - name: baseUrl
+    value: https://mock.echoapi.com/mock/40212c6c1402000

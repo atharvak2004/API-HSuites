@@ -1,0 +1,56 @@
+info:
+  name: Update status for request
+  type: http
+  seq: 7
+  tags:
+    - Counselling
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}counsellor/counselling-request/update-status/8/"
+  body:
+    type: json
+    data: '"{\r\n  \"status\": \"accepted\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}counsellor/counselling-request/update-status/8/"
+      method: PATCH
+      body:
+        type: json
+        data: '"{\r\n  \"status\": \"accepted\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}counsellor/counselling-request/update-status/8/"
+      method: PATCH
+      body:
+        type: json
+        data: '"{\r\n  \"status\": \"accepted\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

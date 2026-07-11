@@ -1,0 +1,7 @@
+info:
+  name: Hospital Management/Hospital Dynamic Content/Hero Section
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

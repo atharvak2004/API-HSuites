@@ -1,0 +1,128 @@
+info:
+  name: Complete profile Counsellor
+  type: http
+  seq: 12
+  tags:
+    - Accounts
+
+http:
+  method: POST
+  url: "{{baseUrl}}accounts/complete-counsellor-profile/"
+  body:
+    type: multipart-form
+    data:
+      - name: photo
+        type: file
+        value: []
+      - name: user_id
+        type: text
+        value: "13"
+      - name: first_name
+        type: text
+        value: Jane
+      - name: middle_name
+        type: text
+        value: sdfgh
+      - name: last_name
+        type: text
+        value: Smith
+      - name: educational_qualifications
+        type: text
+        value: MSc Psychology
+      - name: years_of_experience_months
+        type: text
+        value: "18"
+      - name: current_post
+        type: text
+        value: Junior Counsellor
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}accounts/complete-counsellor-profile/"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: photo
+            type: file
+            value: []
+          - name: user_id
+            type: text
+            value: "13"
+          - name: first_name
+            type: text
+            value: Jane
+          - name: middle_name
+            type: text
+            value: sdfgh
+          - name: last_name
+            type: text
+            value: Smith
+          - name: educational_qualifications
+            type: text
+            value: MSc Psychology
+          - name: years_of_experience_months
+            type: text
+            value: "18"
+          - name: current_post
+            type: text
+            value: Junior Counsellor
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}accounts/complete-counsellor-profile/"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: photo
+            type: file
+            value: []
+          - name: user_id
+            type: text
+            value: "13"
+          - name: first_name
+            type: text
+            value: Jane
+          - name: middle_name
+            type: text
+            value: sdfgh
+          - name: last_name
+            type: text
+            value: Smith
+          - name: educational_qualifications
+            type: text
+            value: MSc Psychology
+          - name: years_of_experience_months
+            type: text
+            value: "18"
+          - name: current_post
+            type: text
+            value: Junior Counsellor
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

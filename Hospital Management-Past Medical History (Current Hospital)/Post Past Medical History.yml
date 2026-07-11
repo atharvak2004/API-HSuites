@@ -1,0 +1,65 @@
+info:
+  name: Post Past Medical History
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Past Medical History (Current Hospital)
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/past-history/current-hospital/"
+  headers:
+    - name: Hospital-Id
+      value: HID00001
+  body:
+    type: json
+    data: '"{\r\n  \"diagnosis_name\": \"Asthma dwefv\",\r\n  \"doctor\": 3,\r\n  \"patient\": 2\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/past-history/current-hospital/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"{\r\n  \"diagnosis_name\": \"Asthma dwefv\",\r\n  \"doctor\": 3,\r\n  \"patient\": 2\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/past-history/current-hospital/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"{\r\n  \"diagnosis_name\": \"Asthma dwefv\",\r\n  \"doctor\": 3,\r\n  \"patient\": 2\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

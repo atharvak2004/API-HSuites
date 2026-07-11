@@ -1,0 +1,95 @@
+info:
+  name: Is Disable
+  type: http
+  seq: 3
+  tags:
+    - Accounts
+
+http:
+  method: PUT
+  url: "{{baseUrl}}accounts/users/5/toggle-active/"
+  headers:
+    - name: Accept
+      value: "*/*"
+    - name: Accept-Encoding
+      value: gzip, deflate, br
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InNlamFsYmhhcmFtYmUyMDAzQGdtYWlsLmNvbSIsImV4cCI6MTc0NDI3NzEzN30.xoAnp740POBsabfQcs6jYeModvQubOOTvdBNYjSfTt8
+    - name: Connection
+      value: keep-alive
+    - name: Content-Type
+      value: application/json
+    - name: User-Agent
+      value: EchoapiRuntime/1.1.0
+  body:
+    type: json
+    data: '""'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}accounts/users/5/toggle-active/"
+      method: PUT
+      headers:
+        - name: Accept
+          value: "*/*"
+        - name: Accept-Encoding
+          value: gzip, deflate, br
+        - name: Authorization
+          value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InNlamFsYmhhcmFtYmUyMDAzQGdtYWlsLmNvbSIsImV4cCI6MTc0NDI3NzEzN30.xoAnp740POBsabfQcs6jYeModvQubOOTvdBNYjSfTt8
+        - name: Connection
+          value: keep-alive
+        - name: Content-Type
+          value: application/json
+        - name: User-Agent
+          value: EchoapiRuntime/1.1.0
+      body:
+        type: json
+        data: '""'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}accounts/users/5/toggle-active/"
+      method: PUT
+      headers:
+        - name: Accept
+          value: "*/*"
+        - name: Accept-Encoding
+          value: gzip, deflate, br
+        - name: Authorization
+          value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InNlamFsYmhhcmFtYmUyMDAzQGdtYWlsLmNvbSIsImV4cCI6MTc0NDI3NzEzN30.xoAnp740POBsabfQcs6jYeModvQubOOTvdBNYjSfTt8
+        - name: Connection
+          value: keep-alive
+        - name: Content-Type
+          value: application/json
+        - name: User-Agent
+          value: EchoapiRuntime/1.1.0
+      body:
+        type: json
+        data: '""'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,65 @@
+info:
+  name: Post Bed
+  type: http
+  seq: 3
+  tags:
+    - Hospital Management/IPD
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/bed/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"ward\": 1,\r\n  \"bed_no\": \"B101\",\r\n  \"description\": \"Corner bed near window\",\r\n  \"bed_type\": \"standard\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/bed/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"ward\": 1,\r\n  \"bed_no\": \"B101\",\r\n  \"description\": \"Corner bed near window\",\r\n  \"bed_type\": \"standard\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/bed/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"ward\": 1,\r\n  \"bed_no\": \"B101\",\r\n  \"description\": \"Corner bed near window\",\r\n  \"bed_type\": \"standard\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

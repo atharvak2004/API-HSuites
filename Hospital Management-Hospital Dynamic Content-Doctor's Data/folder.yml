@@ -1,0 +1,7 @@
+info:
+  name: Hospital Management/Hospital Dynamic Content/Doctor's Data
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

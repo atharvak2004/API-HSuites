@@ -1,0 +1,56 @@
+info:
+  name: Create steps
+  type: http
+  seq: 1
+  tags:
+    - Assessments/Personality Assessments/Treatment
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/create-steps/"
+  body:
+    type: json
+    data: '"{\r\n  \"step_1\": {\r\n    \"title\": \"Practice Objective Observation\",\r\n    \"description\": \"Develop the habit of noticing situations without emotional bias. Focus on facts over assumptions.\"\r\n  },\r\n  \"step_2\": {\r\n    \"title\": \"Ask Clarifying Questions\",\r\n    \"description\": \"When in doubt, seek more information instead of reacting. This leads to informed and rational responses.\"\r\n  },\r\n  \"step_3\": {\r\n    \"title\": \"Use Evidence-Based Thinking\",\r\n    \"description\": \"Rely on data, experience, and research rather than hearsay or emotions when making decisions.\"\r\n  },\r\n  \"step_4\": {\r\n    \"title\": \"Pause Before Reacting\",\r\n    \"description\": \"Create a mental pause before responding, allowing space for a logical and thoughtful reply.\"\r\n  },\r\n  \"step_5\": {\r\n    \"title\": \"Evaluate Options Logically\",\r\n    \"description\": \"List pros and cons for important decisions. Weigh consequences to make balanced choices.\"\r\n  },\r\n  \"step_6\": {\r\n    \"title\": \"Stay Present-Focused\",\r\n    \"description\": \"Avoid overthinking the past or worrying excessively about the future. The Adult ego state thrives in the now.\"\r\n  },\r\n  \"step_7\": {\r\n    \"title\": \"Fact-Check Assumptions\",\r\n    \"description\": \"Before drawing conclusions, verify that your beliefs are based on facts rather than emotional projection.\"\r\n  },\r\n  \"step_8\": {\r\n    \"title\": \"Seek Constructive Feedback\",\r\n    \"description\": \"Invite others to provide insights and use their feedback to refine your perspective or decision-making.\"\r\n  },\r\n  \"step_9\": {\r\n    \"title\": \"Strengthen Problem-Solving Skills\",\r\n    \"description\": \"Approach challenges systematically—define the problem, brainstorm solutions, evaluate, and act.\"\r\n  },\r\n  \"step_10\": {\r\n    \"title\": \"Keep Emotions in Balance\",\r\n    \"description\": \"Recognize your emotions without letting them drive your decisions. Allow logic and feeling to coexist respectfully.\"\r\n  },\r\n  \"type\": \"increase\",\r\n  \"category\": 82\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/create-steps/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"step_1\": {\r\n    \"title\": \"Practice Objective Observation\",\r\n    \"description\": \"Develop the habit of noticing situations without emotional bias. Focus on facts over assumptions.\"\r\n  },\r\n  \"step_2\": {\r\n    \"title\": \"Ask Clarifying Questions\",\r\n    \"description\": \"When in doubt, seek more information instead of reacting. This leads to informed and rational responses.\"\r\n  },\r\n  \"step_3\": {\r\n    \"title\": \"Use Evidence-Based Thinking\",\r\n    \"description\": \"Rely on data, experience, and research rather than hearsay or emotions when making decisions.\"\r\n  },\r\n  \"step_4\": {\r\n    \"title\": \"Pause Before Reacting\",\r\n    \"description\": \"Create a mental pause before responding, allowing space for a logical and thoughtful reply.\"\r\n  },\r\n  \"step_5\": {\r\n    \"title\": \"Evaluate Options Logically\",\r\n    \"description\": \"List pros and cons for important decisions. Weigh consequences to make balanced choices.\"\r\n  },\r\n  \"step_6\": {\r\n    \"title\": \"Stay Present-Focused\",\r\n    \"description\": \"Avoid overthinking the past or worrying excessively about the future. The Adult ego state thrives in the now.\"\r\n  },\r\n  \"step_7\": {\r\n    \"title\": \"Fact-Check Assumptions\",\r\n    \"description\": \"Before drawing conclusions, verify that your beliefs are based on facts rather than emotional projection.\"\r\n  },\r\n  \"step_8\": {\r\n    \"title\": \"Seek Constructive Feedback\",\r\n    \"description\": \"Invite others to provide insights and use their feedback to refine your perspective or decision-making.\"\r\n  },\r\n  \"step_9\": {\r\n    \"title\": \"Strengthen Problem-Solving Skills\",\r\n    \"description\": \"Approach challenges systematically—define the problem, brainstorm solutions, evaluate, and act.\"\r\n  },\r\n  \"step_10\": {\r\n    \"title\": \"Keep Emotions in Balance\",\r\n    \"description\": \"Recognize your emotions without letting them drive your decisions. Allow logic and feeling to coexist respectfully.\"\r\n  },\r\n  \"type\": \"increase\",\r\n  \"category\": 82\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/create-steps/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"step_1\": {\r\n    \"title\": \"Practice Objective Observation\",\r\n    \"description\": \"Develop the habit of noticing situations without emotional bias. Focus on facts over assumptions.\"\r\n  },\r\n  \"step_2\": {\r\n    \"title\": \"Ask Clarifying Questions\",\r\n    \"description\": \"When in doubt, seek more information instead of reacting. This leads to informed and rational responses.\"\r\n  },\r\n  \"step_3\": {\r\n    \"title\": \"Use Evidence-Based Thinking\",\r\n    \"description\": \"Rely on data, experience, and research rather than hearsay or emotions when making decisions.\"\r\n  },\r\n  \"step_4\": {\r\n    \"title\": \"Pause Before Reacting\",\r\n    \"description\": \"Create a mental pause before responding, allowing space for a logical and thoughtful reply.\"\r\n  },\r\n  \"step_5\": {\r\n    \"title\": \"Evaluate Options Logically\",\r\n    \"description\": \"List pros and cons for important decisions. Weigh consequences to make balanced choices.\"\r\n  },\r\n  \"step_6\": {\r\n    \"title\": \"Stay Present-Focused\",\r\n    \"description\": \"Avoid overthinking the past or worrying excessively about the future. The Adult ego state thrives in the now.\"\r\n  },\r\n  \"step_7\": {\r\n    \"title\": \"Fact-Check Assumptions\",\r\n    \"description\": \"Before drawing conclusions, verify that your beliefs are based on facts rather than emotional projection.\"\r\n  },\r\n  \"step_8\": {\r\n    \"title\": \"Seek Constructive Feedback\",\r\n    \"description\": \"Invite others to provide insights and use their feedback to refine your perspective or decision-making.\"\r\n  },\r\n  \"step_9\": {\r\n    \"title\": \"Strengthen Problem-Solving Skills\",\r\n    \"description\": \"Approach challenges systematically—define the problem, brainstorm solutions, evaluate, and act.\"\r\n  },\r\n  \"step_10\": {\r\n    \"title\": \"Keep Emotions in Balance\",\r\n    \"description\": \"Recognize your emotions without letting them drive your decisions. Allow logic and feeling to coexist respectfully.\"\r\n  },\r\n  \"type\": \"increase\",\r\n  \"category\": 82\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

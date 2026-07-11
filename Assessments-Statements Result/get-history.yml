@@ -1,0 +1,56 @@
+info:
+  name: get-history
+  type: http
+  seq: 2
+  tags:
+    - Assessments/Statements Result
+
+http:
+  method: GET
+  url: "{{baseUrl}}assessments/test-history/1/"
+  body:
+    type: json
+    data: '"{\r\n    \"test_history\": [\r\n        {\r\n           \"id\": 2,\r\n\t\t\"logical\": 3,\r\n\t\t\"analytical\": 0,\r\n\t\t\"strategic\": 1,\r\n\t\t\"thinking\": 3,\r\n\t\t\"skip\": 3,\r\n\t\t\"total\": 3,\r\n\t\t\"result\": \"logical\",\r\n\t\t\"type\": \"statement-based\",\r\n\t\t\"created_at\": \"2025-04-18T09:07:13.704346Z\",\r\n\t\t\"updated_at\": \"2025-04-18T09:07:13.704346Z\",\r\n\t\t\"user_id\": 1\r\n        }\r\n    ] \r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/test-history/1/"
+      method: GET
+      body:
+        type: json
+        data: '"{\r\n    \"test_history\": [\r\n        {\r\n           \"id\": 2,\r\n\t\t\"logical\": 3,\r\n\t\t\"analytical\": 0,\r\n\t\t\"strategic\": 1,\r\n\t\t\"thinking\": 3,\r\n\t\t\"skip\": 3,\r\n\t\t\"total\": 3,\r\n\t\t\"result\": \"logical\",\r\n\t\t\"type\": \"statement-based\",\r\n\t\t\"created_at\": \"2025-04-18T09:07:13.704346Z\",\r\n\t\t\"updated_at\": \"2025-04-18T09:07:13.704346Z\",\r\n\t\t\"user_id\": 1\r\n        }\r\n    ] \r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/test-history/1/"
+      method: GET
+      body:
+        type: json
+        data: '"{\r\n    \"test_history\": [\r\n        {\r\n           \"id\": 2,\r\n\t\t\"logical\": 3,\r\n\t\t\"analytical\": 0,\r\n\t\t\"strategic\": 1,\r\n\t\t\"thinking\": 3,\r\n\t\t\"skip\": 3,\r\n\t\t\"total\": 3,\r\n\t\t\"result\": \"logical\",\r\n\t\t\"type\": \"statement-based\",\r\n\t\t\"created_at\": \"2025-04-18T09:07:13.704346Z\",\r\n\t\t\"updated_at\": \"2025-04-18T09:07:13.704346Z\",\r\n\t\t\"user_id\": 1\r\n        }\r\n    ] \r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

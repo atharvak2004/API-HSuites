@@ -1,0 +1,47 @@
+info:
+  name: Get quiz by type
+  type: http
+  seq: 3
+  tags:
+    - Assessments/Personality Assessments
+
+http:
+  method: GET
+  url: "{{baseUrl}}assessments/quiz/type/statement-based/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/quiz/type/statement-based/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/quiz/type/statement-based/"
+      method: GET
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

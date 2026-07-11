@@ -1,0 +1,7 @@
+info:
+  name: Assessments/MCQ Assessments
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

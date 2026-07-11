@@ -1,0 +1,65 @@
+info:
+  name: Post Birth report
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Birth Report
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/birth-report/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"patient\": 37,\r\n  \"child_name\": \"Baby Sharma\",\r\n  \"gender\": \"Female\",\r\n  \"dob_child\": \"2025-07-17T10:00:00Z\",\r\n  \"birth_place\": \"Sancheti Hospital, Pune\",\r\n  \"father_name\": \"Rahul Sharma\",\r\n  \"weight\": \"3.2\",\r\n  \"remark\": \"Normal delivery\",\r\n  \"created_by\": 16\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/birth-report/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"patient\": 37,\r\n  \"child_name\": \"Baby Sharma\",\r\n  \"gender\": \"Female\",\r\n  \"dob_child\": \"2025-07-17T10:00:00Z\",\r\n  \"birth_place\": \"Sancheti Hospital, Pune\",\r\n  \"father_name\": \"Rahul Sharma\",\r\n  \"weight\": \"3.2\",\r\n  \"remark\": \"Normal delivery\",\r\n  \"created_by\": 16\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/birth-report/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"patient\": 37,\r\n  \"child_name\": \"Baby Sharma\",\r\n  \"gender\": \"Female\",\r\n  \"dob_child\": \"2025-07-17T10:00:00Z\",\r\n  \"birth_place\": \"Sancheti Hospital, Pune\",\r\n  \"father_name\": \"Rahul Sharma\",\r\n  \"weight\": \"3.2\",\r\n  \"remark\": \"Normal delivery\",\r\n  \"created_by\": 16\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,56 @@
+info:
+  name: Get medicine by patient id
+  type: http
+  seq: 2
+  tags:
+    - Hospital Management/Medicine
+
+http:
+  method: GET
+  url: "{{baseUrl}}hospital/medicines/patient/37/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/medicines/patient/37/"
+      method: GET
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/medicines/patient/37/"
+      method: GET
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

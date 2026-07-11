@@ -1,0 +1,96 @@
+info:
+  name: Update Payment
+  type: http
+  seq: 6
+  tags:
+    - Hospital Management/Bill
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}hospital/bill/37/update-payment/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"payment_mode\": \"upi\",\r\n  \"status\": \"paid\",\r\n  \"patient_id\": 26\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/bill/37/update-payment/"
+      method: PATCH
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"payment_mode\": \"upi\",\r\n  \"status\": \"paid\",\r\n  \"patient_id\": 26\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "Bill payment updated and invoice generated successfully.",
+          	"bill_id": 27,
+          	"status": "paid",
+          	"payment_mode": "upi",
+          	"payment_date": "2025-07-11T09:10:06.942515Z",
+          	"paid_amount": 3,
+          	"invoice": {
+          		"id": 1,
+          		"bill": 27,
+          		"paid_amount": 3,
+          		"payment_mode": "upi",
+          		"date": "2025-07-11T09:10:06.950527Z",
+          		"particulars": [
+          			{
+          				"name": "dfg",
+          				"amount": 3,
+          				"description": "sfsrfre",
+          				"type": null
+          			}
+          		]
+          	},
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210"
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/bill/37/update-payment/"
+      method: PATCH
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"payment_mode\": \"upi\",\r\n  \"status\": \"paid\",\r\n  \"patient_id\": 26\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,65 @@
+info:
+  name: Post diseases
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Diseases
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/diseases/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"patient\": 26,\r\n  \"disease_name\": \"Hypertension\",\r\n  \"severity\": \"moderate\",\r\n  \"status\": \"active\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/diseases/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"patient\": 26,\r\n  \"disease_name\": \"Hypertension\",\r\n  \"severity\": \"moderate\",\r\n  \"status\": \"active\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/diseases/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"patient\": 26,\r\n  \"disease_name\": \"Hypertension\",\r\n  \"severity\": \"moderate\",\r\n  \"status\": \"active\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

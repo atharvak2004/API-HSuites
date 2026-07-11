@@ -1,0 +1,56 @@
+info:
+  name: Review
+  type: http
+  seq: 5
+  tags:
+    - Books details
+
+http:
+  method: POST
+  url: "{{baseUrl}}books/review/"
+  body:
+    type: json
+    data: '"{\r\n  \"description_id\": 1,\r\n  \"user_id\": 4,\r\n  \"approved\": true,\r\n  \"updated\": true\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}books/review/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"description_id\": 1,\r\n  \"user_id\": 4,\r\n  \"approved\": true,\r\n  \"updated\": true\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}books/review/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"description_id\": 1,\r\n  \"user_id\": 4,\r\n  \"approved\": true,\r\n  \"updated\": true\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

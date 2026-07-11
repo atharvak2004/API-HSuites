@@ -1,0 +1,65 @@
+info:
+  name: Update appointment doctor
+  type: http
+  seq: 2
+  tags:
+    - Hospital Management/Patient Appointment
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}hospital/patient/appointment/21/doctor-status/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"status\": \"rejected\",\r\n  \"status_remark\": \"Testing Doctor is not available on requested date.\"\r\n}\r\n\r\n// {\r\n//   \"status\": \"rescheduled\",\r\n//   \"final_time\": \"2025-08-05T12:00:00Z\",\r\n//   \"status_remark\": \"Doctor not available on requested date, rescheduled.\"\r\n// }\r\n\r\n// {\r\n//   \"status\": \"accepted\",\r\n//   \"final_time\": \"2025-08-04T11:00:00Z\",\r\n//   \"status_remark\": \"Appointment confirmed at requested time.\"\r\n// }"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/patient/appointment/21/doctor-status/"
+      method: PATCH
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"status\": \"rejected\",\r\n  \"status_remark\": \"Testing Doctor is not available on requested date.\"\r\n}\r\n\r\n// {\r\n//   \"status\": \"rescheduled\",\r\n//   \"final_time\": \"2025-08-05T12:00:00Z\",\r\n//   \"status_remark\": \"Doctor not available on requested date, rescheduled.\"\r\n// }\r\n\r\n// {\r\n//   \"status\": \"accepted\",\r\n//   \"final_time\": \"2025-08-04T11:00:00Z\",\r\n//   \"status_remark\": \"Appointment confirmed at requested time.\"\r\n// }"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/patient/appointment/21/doctor-status/"
+      method: PATCH
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"status\": \"rejected\",\r\n  \"status_remark\": \"Testing Doctor is not available on requested date.\"\r\n}\r\n\r\n// {\r\n//   \"status\": \"rescheduled\",\r\n//   \"final_time\": \"2025-08-05T12:00:00Z\",\r\n//   \"status_remark\": \"Doctor not available on requested date, rescheduled.\"\r\n// }\r\n\r\n// {\r\n//   \"status\": \"accepted\",\r\n//   \"final_time\": \"2025-08-04T11:00:00Z\",\r\n//   \"status_remark\": \"Appointment confirmed at requested time.\"\r\n// }"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,56 @@
+info:
+  name: submit-answer
+  type: http
+  seq: 1
+  tags:
+    - Assessments/Statements Result
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/submit-test/"
+  body:
+    type: json
+    data: '"{\r\n    \"user_id\": 1,\r\n    \"type\":\"statement-based\",\r\n    \"responses\": [\"logical\", \"logical\", \"\", \"\", \"\", \"thinking\", \"strategic\", \"thinking\", \"logical\", \"thinking\"]\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/submit-test/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"user_id\": 1,\r\n    \"type\":\"statement-based\",\r\n    \"responses\": [\"logical\", \"logical\", \"\", \"\", \"\", \"thinking\", \"strategic\", \"thinking\", \"logical\", \"thinking\"]\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/submit-test/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"user_id\": 1,\r\n    \"type\":\"statement-based\",\r\n    \"responses\": [\"logical\", \"logical\", \"\", \"\", \"\", \"thinking\", \"strategic\", \"thinking\", \"logical\", \"thinking\"]\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

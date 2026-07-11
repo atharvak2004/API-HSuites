@@ -1,0 +1,65 @@
+info:
+  name: Update Patient details
+  type: http
+  seq: 3
+  tags:
+    - Hospital Management/Patients
+
+http:
+  method: PUT
+  url: "{{baseUrl}}hospital/patient/update/26/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n    // \"id\": 1,\r\n    \"full_name\": \"Gayatri rajguru10wef\",\r\n\t\"gender\": \"Female\",\r\n\t\"dob\": \"2002-07-25\",\r\n\t\"relative_name\": \"Suresh Pafghjtil\",\r\n\t\"contact_number\": \"9876543210\",\r\n\t\"email\": \"rahul@example.com\",\r\n\t\"emergency_contact_number\": \"9988776655\",\r\n\t\"address\": \"Pune, Maharashtra\",\r\n\t\"blood_group\": \"B+\",\r\n\t\"medical_history\": \"Diabetic patient\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/patient/update/26/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    // \"id\": 1,\r\n    \"full_name\": \"Gayatri rajguru10wef\",\r\n\t\"gender\": \"Female\",\r\n\t\"dob\": \"2002-07-25\",\r\n\t\"relative_name\": \"Suresh Pafghjtil\",\r\n\t\"contact_number\": \"9876543210\",\r\n\t\"email\": \"rahul@example.com\",\r\n\t\"emergency_contact_number\": \"9988776655\",\r\n\t\"address\": \"Pune, Maharashtra\",\r\n\t\"blood_group\": \"B+\",\r\n\t\"medical_history\": \"Diabetic patient\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/patient/update/26/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    // \"id\": 1,\r\n    \"full_name\": \"Gayatri rajguru10wef\",\r\n\t\"gender\": \"Female\",\r\n\t\"dob\": \"2002-07-25\",\r\n\t\"relative_name\": \"Suresh Pafghjtil\",\r\n\t\"contact_number\": \"9876543210\",\r\n\t\"email\": \"rahul@example.com\",\r\n\t\"emergency_contact_number\": \"9988776655\",\r\n\t\"address\": \"Pune, Maharashtra\",\r\n\t\"blood_group\": \"B+\",\r\n\t\"medical_history\": \"Diabetic patient\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

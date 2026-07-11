@@ -1,0 +1,56 @@
+info:
+  name: Quiz Result History
+  type: http
+  seq: 11
+  tags:
+    - Assessments/Personality Assessments
+
+http:
+  method: GET
+  url: "{{baseUrl}}assessments/quiz/results/user/1/"
+  body:
+    type: json
+    data: '"{\r\n    \"id\": 8,\r\n\t\"cat_1_marks\": 0,\r\n\t\"cat_2_marks\": 3,\r\n\t\"cat_3_marks\": 0,\r\n\t\"cat_4_marks\": 0,\r\n\t\"skip\": 1,\r\n\t\"result\": \"Countries Personality\",\r\n\t\"date_taken\": \"2025-04-18T09:30:27.780415Z\",\r\n\t\"user_id\": 1,\r\n\t\"quiz\": 1\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/quiz/results/user/1/"
+      method: GET
+      body:
+        type: json
+        data: '"{\r\n    \"id\": 8,\r\n\t\"cat_1_marks\": 0,\r\n\t\"cat_2_marks\": 3,\r\n\t\"cat_3_marks\": 0,\r\n\t\"cat_4_marks\": 0,\r\n\t\"skip\": 1,\r\n\t\"result\": \"Countries Personality\",\r\n\t\"date_taken\": \"2025-04-18T09:30:27.780415Z\",\r\n\t\"user_id\": 1,\r\n\t\"quiz\": 1\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/quiz/results/user/1/"
+      method: GET
+      body:
+        type: json
+        data: '"{\r\n    \"id\": 8,\r\n\t\"cat_1_marks\": 0,\r\n\t\"cat_2_marks\": 3,\r\n\t\"cat_3_marks\": 0,\r\n\t\"cat_4_marks\": 0,\r\n\t\"skip\": 1,\r\n\t\"result\": \"Countries Personality\",\r\n\t\"date_taken\": \"2025-04-18T09:30:27.780415Z\",\r\n\t\"user_id\": 1,\r\n\t\"quiz\": 1\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

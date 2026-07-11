@@ -1,0 +1,65 @@
+info:
+  name: Post Doctor Timetable
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Doctor Timetable
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/doctor-timetable/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"doctor\": 16,\r\n  \"day\": \"monday\",\r\n  \"date\": \"2025-07-26\",\r\n  \"start_time\": \"09:00:00\",\r\n  \"end_time\": \"12:00:00\",\r\n  \"remark\": \"Morning OPD shift\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/doctor-timetable/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"doctor\": 16,\r\n  \"day\": \"monday\",\r\n  \"date\": \"2025-07-26\",\r\n  \"start_time\": \"09:00:00\",\r\n  \"end_time\": \"12:00:00\",\r\n  \"remark\": \"Morning OPD shift\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/doctor-timetable/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"doctor\": 16,\r\n  \"day\": \"monday\",\r\n  \"date\": \"2025-07-26\",\r\n  \"start_time\": \"09:00:00\",\r\n  \"end_time\": \"12:00:00\",\r\n  \"remark\": \"Morning OPD shift\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

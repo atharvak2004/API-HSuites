@@ -1,0 +1,7 @@
+info:
+  name: Hospital Management/Patient Past Hospital History
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

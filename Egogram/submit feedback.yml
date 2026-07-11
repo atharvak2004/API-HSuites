@@ -1,0 +1,56 @@
+info:
+  name: submit feedback
+  type: http
+  seq: 15
+  tags:
+    - Egogram
+
+http:
+  method: POST
+  url: "{{baseUrl}}egogram/user-feedback/"
+  body:
+    type: json
+    data: '"{\n  \"user_id\": 5,\n  \"user_name\": \"Ashish Bhosale\",\n  \"user_email\": \"ashish@example.com\",\n  \"feedback_message\": \"The platform is really helpful and easy to use!\"\n}\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}egogram/user-feedback/"
+      method: POST
+      body:
+        type: json
+        data: '"{\n  \"user_id\": 5,\n  \"user_name\": \"Ashish Bhosale\",\n  \"user_email\": \"ashish@example.com\",\n  \"feedback_message\": \"The platform is really helpful and easy to use!\"\n}\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}egogram/user-feedback/"
+      method: POST
+      body:
+        type: json
+        data: '"{\n  \"user_id\": 5,\n  \"user_name\": \"Ashish Bhosale\",\n  \"user_email\": \"ashish@example.com\",\n  \"feedback_message\": \"The platform is really helpful and easy to use!\"\n}\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

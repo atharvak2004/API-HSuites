@@ -1,0 +1,65 @@
+info:
+  name: Update pharmacy bill
+  type: http
+  seq: 5
+  tags:
+    - Hospital Management/Pharmacist
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}hospital/pharmacy-bill/41/update/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"payment_mode\": \"cash\",\r\n  \"payment_status\": \"paid\",\r\n  \"discount\": 5\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/pharmacy-bill/41/update/"
+      method: PATCH
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"payment_mode\": \"cash\",\r\n  \"payment_status\": \"paid\",\r\n  \"discount\": 5\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/pharmacy-bill/41/update/"
+      method: PATCH
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"payment_mode\": \"cash\",\r\n  \"payment_status\": \"paid\",\r\n  \"discount\": 5\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

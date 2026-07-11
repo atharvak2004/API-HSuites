@@ -1,0 +1,65 @@
+info:
+  name: Update Doctor Timetable
+  type: http
+  seq: 3
+  tags:
+    - Hospital Management/Doctor Timetable
+
+http:
+  method: PUT
+  url: "{{baseUrl}}hospital/doctor-timetable/1/update/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"start_time\": \"09:30:00\",\r\n  \"end_time\": \"12:30:00\",\r\n  \"remark\": \"Updated timing\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/doctor-timetable/1/update/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"start_time\": \"09:30:00\",\r\n  \"end_time\": \"12:30:00\",\r\n  \"remark\": \"Updated timing\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/doctor-timetable/1/update/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"start_time\": \"09:30:00\",\r\n  \"end_time\": \"12:30:00\",\r\n  \"remark\": \"Updated timing\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

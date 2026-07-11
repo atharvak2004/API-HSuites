@@ -1,0 +1,65 @@
+info:
+  name: Post Ward
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/IPD
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/wards/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"ward_name\": \"General Ward A\",\r\n  \"floor\": 2,\r\n  \"building\": \"A\",\r\n  \"ward_type\": \"general\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/wards/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"ward_name\": \"General Ward A\",\r\n  \"floor\": 2,\r\n  \"building\": \"A\",\r\n  \"ward_type\": \"general\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/wards/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"ward_name\": \"General Ward A\",\r\n  \"floor\": 2,\r\n  \"building\": \"A\",\r\n  \"ward_type\": \"general\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

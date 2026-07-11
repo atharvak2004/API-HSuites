@@ -1,0 +1,56 @@
+info:
+  name: Login (POST)
+  type: http
+  seq: 3
+  tags:
+    - Assessments/Login & Registration
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/login/"
+  body:
+    type: json
+    data: '"{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"password\"\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/login/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"password\"\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/login/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"password\"\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

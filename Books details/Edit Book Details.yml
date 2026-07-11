@@ -1,0 +1,56 @@
+info:
+  name: Edit Book Details
+  type: http
+  seq: 2
+  tags:
+    - Books details
+
+http:
+  method: PUT
+  url: "{{baseUrl}}books/book-details/"
+  body:
+    type: json
+    data: '"{\r\n    \"id\": 1,  \r\n    \"code\": \"f01\",\r\n    \"description\": \"Updated sample description\",\r\n    \"book\": 1,  \r\n    \"sub_descriptions\": [\r\n        {\r\n            \"id\": 1,\r\n            \"code\": \"new change\",\r\n            \"sub_description\": \"one more new updated change\"\r\n        }\r\n    ],\r\n    \"user_id\": 2\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}books/book-details/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n    \"id\": 1,  \r\n    \"code\": \"f01\",\r\n    \"description\": \"Updated sample description\",\r\n    \"book\": 1,  \r\n    \"sub_descriptions\": [\r\n        {\r\n            \"id\": 1,\r\n            \"code\": \"new change\",\r\n            \"sub_description\": \"one more new updated change\"\r\n        }\r\n    ],\r\n    \"user_id\": 2\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}books/book-details/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n    \"id\": 1,  \r\n    \"code\": \"f01\",\r\n    \"description\": \"Updated sample description\",\r\n    \"book\": 1,  \r\n    \"sub_descriptions\": [\r\n        {\r\n            \"id\": 1,\r\n            \"code\": \"new change\",\r\n            \"sub_description\": \"one more new updated change\"\r\n        }\r\n    ],\r\n    \"user_id\": 2\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,56 @@
+info:
+  name: Feedback
+  type: http
+  seq: 7
+  tags:
+    - Assessments/Personality Assessments/Treatment
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/feedback/"
+  body:
+    type: json
+    data: '"{\r\n  \"treatment\": 70,\r\n  \"user\": 5,\r\n  \"description\": {\r\n    \"steps\": 22,   // or pass actual step JSON if needed\r\n    \"note\": \"The user felt this step was unclear.\"\r\n  }\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/feedback/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"treatment\": 70,\r\n  \"user\": 5,\r\n  \"description\": {\r\n    \"steps\": 22,   // or pass actual step JSON if needed\r\n    \"note\": \"The user felt this step was unclear.\"\r\n  }\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/feedback/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"treatment\": 70,\r\n  \"user\": 5,\r\n  \"description\": {\r\n    \"steps\": 22,   // or pass actual step JSON if needed\r\n    \"note\": \"The user felt this step was unclear.\"\r\n  }\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,71 @@
+info:
+  name: Create user by Admin
+  type: http
+  seq: 8
+  tags:
+    - Accounts
+
+http:
+  method: POST
+  url: "{{baseUrl}}accounts/create-user/"
+  headers:
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InNlamFsYmhhcmFtYmUyMDAzQGdtYWlsLmNvbSIsImV4cCI6MTc0NjUxMDQwNn0.yG6DkJQDEq-BUIUK9K5rhd-Qzi3F9mH9nfvyyo8BGC8
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: '"{\r\n    \"username\": \"newuser\",\r\n    \"email\": \"newuser@example.com\",\r\n    \"password\": \"password\",\r\n    \"role\": \"Admin\"\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}accounts/create-user/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InNlamFsYmhhcmFtYmUyMDAzQGdtYWlsLmNvbSIsImV4cCI6MTc0NjUxMDQwNn0.yG6DkJQDEq-BUIUK9K5rhd-Qzi3F9mH9nfvyyo8BGC8
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: '"{\r\n    \"username\": \"newuser\",\r\n    \"email\": \"newuser@example.com\",\r\n    \"password\": \"password\",\r\n    \"role\": \"Admin\"\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}accounts/create-user/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InNlamFsYmhhcmFtYmUyMDAzQGdtYWlsLmNvbSIsImV4cCI6MTc0NjUxMDQwNn0.yG6DkJQDEq-BUIUK9K5rhd-Qzi3F9mH9nfvyyo8BGC8
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: '"{\r\n    \"username\": \"newuser\",\r\n    \"email\": \"newuser@example.com\",\r\n    \"password\": \"password\",\r\n    \"role\": \"Admin\"\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

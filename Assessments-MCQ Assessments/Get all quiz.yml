@@ -1,0 +1,58 @@
+info:
+  name: Get all quiz
+  type: http
+  seq: 2
+  tags:
+    - Assessments/MCQ Assessments
+
+http:
+  method: GET
+  url: "{{baseUrl}}assessments/mcq-quizzes/"
+  body:
+    type: json
+    data: '""'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/mcq-quizzes/"
+      method: GET
+      body:
+        type: json
+        data: '""'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/mcq-quizzes/"
+      method: GET
+      body:
+        type: json
+        data: '""'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+
+docs: "for get quiz on test page "

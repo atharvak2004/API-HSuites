@@ -1,0 +1,7 @@
+info:
+  name: Hospital Management/Doctor Timetable
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

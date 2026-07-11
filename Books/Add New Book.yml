@@ -1,0 +1,56 @@
+info:
+  name: Add New Book
+  type: http
+  seq: 2
+  tags:
+    - Books
+
+http:
+  method: POST
+  url: "{{baseUrl}}books/"
+  body:
+    type: json
+    data: '"{\r\n    \"name\": \"Science\",\r\n    \"version\": \"1.0\",\r\n    \"author\": \"John Doe\",\r\n    \"code_sets\":[\r\n        {\"name\": \"Djanmngo\"},\r\n        {\"name\": \"Python\"},\r\n        {\"name\": \"REST API\"}\r\n    ]\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}books/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"name\": \"Science\",\r\n    \"version\": \"1.0\",\r\n    \"author\": \"John Doe\",\r\n    \"code_sets\":[\r\n        {\"name\": \"Djanmngo\"},\r\n        {\"name\": \"Python\"},\r\n        {\"name\": \"REST API\"}\r\n    ]\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}books/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n    \"name\": \"Science\",\r\n    \"version\": \"1.0\",\r\n    \"author\": \"John Doe\",\r\n    \"code_sets\":[\r\n        {\"name\": \"Djanmngo\"},\r\n        {\"name\": \"Python\"},\r\n        {\"name\": \"REST API\"}\r\n    ]\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

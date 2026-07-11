@@ -1,0 +1,56 @@
+info:
+  name: edit clinical notes
+  type: http
+  seq: 2
+  tags:
+    - Hospital Management/Clinical Notes
+
+http:
+  method: PUT
+  url: "{{baseUrl}}hospital/clinical-notes/"
+  body:
+    type: json
+    data: '"{\r\n  \"id\": 1,\r\n  \"pain\": \"Severe Headache\",\r\n  \"pain_start_date\": \"2025-06-05\",\r\n  \"pain_severity\": \"severe\",\r\n  \"observation\": \"Patient appears pale, weak, and fatigued.\",\r\n  \"diagnosis\": \"Chronic Migraine\",\r\n  \"evidence\": \"MRI and CT scan reports support migraine symptoms.\",\r\n  \"treatment_plan\": \"Prescribe medication, hydration, and adequate rest.\",\r\n  \"advice\": \"Avoid bright light, loud noise, and stress.\",\r\n  \"remark\": \"Follow-up after 5 days.\",\r\n  \"next_followup_date\": \"2025-06-30\",\r\n  \"added_by\": 16\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/clinical-notes/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n  \"id\": 1,\r\n  \"pain\": \"Severe Headache\",\r\n  \"pain_start_date\": \"2025-06-05\",\r\n  \"pain_severity\": \"severe\",\r\n  \"observation\": \"Patient appears pale, weak, and fatigued.\",\r\n  \"diagnosis\": \"Chronic Migraine\",\r\n  \"evidence\": \"MRI and CT scan reports support migraine symptoms.\",\r\n  \"treatment_plan\": \"Prescribe medication, hydration, and adequate rest.\",\r\n  \"advice\": \"Avoid bright light, loud noise, and stress.\",\r\n  \"remark\": \"Follow-up after 5 days.\",\r\n  \"next_followup_date\": \"2025-06-30\",\r\n  \"added_by\": 16\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/clinical-notes/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n  \"id\": 1,\r\n  \"pain\": \"Severe Headache\",\r\n  \"pain_start_date\": \"2025-06-05\",\r\n  \"pain_severity\": \"severe\",\r\n  \"observation\": \"Patient appears pale, weak, and fatigued.\",\r\n  \"diagnosis\": \"Chronic Migraine\",\r\n  \"evidence\": \"MRI and CT scan reports support migraine symptoms.\",\r\n  \"treatment_plan\": \"Prescribe medication, hydration, and adequate rest.\",\r\n  \"advice\": \"Avoid bright light, loud noise, and stress.\",\r\n  \"remark\": \"Follow-up after 5 days.\",\r\n  \"next_followup_date\": \"2025-06-30\",\r\n  \"added_by\": 16\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

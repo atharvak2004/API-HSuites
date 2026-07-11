@@ -1,0 +1,68 @@
+info:
+  name: Get available doctors
+  type: http
+  seq: 9
+  tags:
+    - Hospital Management/HMS User
+
+http:
+  method: GET
+  url: "{{baseUrl}}hospital/hmsuser/doctors/available/"
+  headers:
+    - name: Hospital-Id
+      value: HID00001
+  params:
+    - name: search
+      value: Ka
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/hmsuser/doctors/available/"
+      method: GET
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      params:
+        - name: search
+          value: Ka
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/hmsuser/doctors/available/"
+      method: GET
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      params:
+        - name: search
+          value: Ka
+          type: query
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

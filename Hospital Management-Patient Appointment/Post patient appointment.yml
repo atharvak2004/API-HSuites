@@ -1,0 +1,123 @@
+info:
+  name: Post patient appointment
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Patient Appointment
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/patient/appointment/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"department\": \"Neurology\",\r\n  \"preferred_doctor\": 16,\r\n  \"reason\": \"test Chest pain and fatigue\",\r\n  \"preferred_date_and_time\": \"2025-08-04T11:00:00Z\",\r\n  \"patient_status\": \"available\",\r\n  \"patient_id\": 57\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/patient/appointment/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"department\": \"Neurology\",\r\n  \"preferred_doctor\": 16,\r\n  \"reason\": \"test Chest pain and fatigue\",\r\n  \"preferred_date_and_time\": \"2025-08-04T11:00:00Z\",\r\n  \"patient_status\": \"available\",\r\n  \"patient_id\": 57\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "Appointment requested successfully.",
+          	"data": {
+          		"id": 5,
+          		"preferred_doctor": {
+          			"id": 16,
+          			"name": "Dr.Samir Mishra",
+          			"designation": "doctor",
+          			"email": "samir@example.com",
+          			"is_active": true,
+          			"hospital": 2,
+          			"is_doctor_available": true
+          		},
+          		"patient": {
+          			"id": 57,
+          			"known_allergies": [],
+          			"age": 29,
+          			"patient_id": "PA00057",
+          			"full_name": "Rahul Sharma",
+          			"gender": "Male",
+          			"dob": "1995-10-20",
+          			"relative_name": null,
+          			"contact_number": "9876543210",
+          			"email": "004iipt@gmail.com",
+          			"emergency_contact_number": null,
+          			"address": "Pune, Maharashtra",
+          			"blood_group": null,
+          			"medical_history": null,
+          			"visit_count": 2,
+          			"date": "2025-07-23T16:18:04.142184+05:30",
+          			"is_active_patient": true,
+          			"password": "pbkdf2_sha256$870000$k9fAd5yVYG8QQ4xGAsp7E5$I+xq4ixmBoc9ajhMXWIggK64S1mEm5/dHh6CKOhnTjU=",
+          			"email_otp": null,
+          			"verified_at": "2025-07-23T17:15:57.183384+05:30",
+          			"hospital": 2
+          		},
+          		"department": "Cardiology",
+          		"reason": "Chest pain and fatigue",
+          		"preferred_date_and_time": "2025-07-25T17:00:00+05:30",
+          		"status": "requested",
+          		"status_remark": null,
+          		"patient_status": "available",
+          		"final_time": null,
+          		"final_status": false,
+          		"created_at": "2025-07-25T09:55:32.167680+05:30",
+          		"updated_at": "2025-07-25T09:55:32.168631+05:30",
+          		"hospital": 2
+          	},
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210",
+          		"logo": null
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/patient/appointment/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"department\": \"Neurology\",\r\n  \"preferred_doctor\": 16,\r\n  \"reason\": \"test Chest pain and fatigue\",\r\n  \"preferred_date_and_time\": \"2025-08-04T11:00:00Z\",\r\n  \"patient_status\": \"available\",\r\n  \"patient_id\": 57\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

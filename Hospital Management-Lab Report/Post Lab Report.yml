@@ -1,0 +1,110 @@
+info:
+  name: Post Lab Report
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Lab Report
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/lab-report/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: multipart-form
+    data:
+      - name: patient
+        type: text
+        value: "37"
+      - name: uploaded_by
+        type: text
+        value: "32"
+      - name: report_name
+        type: text
+        value: CBC Report
+      - name: description
+        type: text
+        value: Routine blood test
+      - name: file
+        type: file
+        value: []
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/lab-report/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: multipart-form
+        data:
+          - name: patient
+            type: text
+            value: "37"
+          - name: uploaded_by
+            type: text
+            value: "32"
+          - name: report_name
+            type: text
+            value: CBC Report
+          - name: description
+            type: text
+            value: Routine blood test
+          - name: file
+            type: file
+            value: []
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/lab-report/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: multipart-form
+        data:
+          - name: patient
+            type: text
+            value: "37"
+          - name: uploaded_by
+            type: text
+            value: "32"
+          - name: report_name
+            type: text
+            value: CBC Report
+          - name: description
+            type: text
+            value: Routine blood test
+          - name: file
+            type: file
+            value: []
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

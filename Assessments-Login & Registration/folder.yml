@@ -1,0 +1,7 @@
+info:
+  name: Assessments/Login & Registration
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

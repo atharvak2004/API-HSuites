@@ -1,0 +1,128 @@
+info:
+  name: Post hospital and admin
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Hospital
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/hospital-and-admin/"
+  body:
+    type: multipart-form
+    data:
+      - name: logo
+        type: file
+        value: []
+      - name: name
+        type: text
+        value: Prushal-test-Hospital
+      - name: address
+        type: text
+        value: Gurukrupa building, Katraj, Pune
+      - name: owner
+        type: text
+        value: Dr. Atharva Kadam
+      - name: contact
+        type: text
+        value: "9765208456"
+      - name: admin_name
+        type: text
+        value: admin
+      - name: admin_email
+        type: text
+        value: admin@gmail.com
+      - name: admin_password
+        type: text
+        value: password
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/hospital-and-admin/"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: logo
+            type: file
+            value: []
+          - name: name
+            type: text
+            value: Prushal-test-Hospital
+          - name: address
+            type: text
+            value: Gurukrupa building, Katraj, Pune
+          - name: owner
+            type: text
+            value: Dr. Atharva Kadam
+          - name: contact
+            type: text
+            value: "9765208456"
+          - name: admin_name
+            type: text
+            value: admin
+          - name: admin_email
+            type: text
+            value: admin@gmail.com
+          - name: admin_password
+            type: text
+            value: password
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/hospital-and-admin/"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: logo
+            type: file
+            value: []
+          - name: name
+            type: text
+            value: Prushal-test-Hospital
+          - name: address
+            type: text
+            value: Gurukrupa building, Katraj, Pune
+          - name: owner
+            type: text
+            value: Dr. Atharva Kadam
+          - name: contact
+            type: text
+            value: "9765208456"
+          - name: admin_name
+            type: text
+            value: admin
+          - name: admin_email
+            type: text
+            value: admin@gmail.com
+          - name: admin_password
+            type: text
+            value: password
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

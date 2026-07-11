@@ -1,0 +1,56 @@
+info:
+  name: Edit questions
+  type: http
+  seq: 10
+  tags:
+    - Assessments/MCQ Assessments
+
+http:
+  method: PUT
+  url: "{{baseUrl}}assessments/mcq-questions/1/edit/"
+  body:
+    type: json
+    data: '"{\r\n\t\t\"question\": \"Whichwedfrg of the following are programming languages multiple?\",\r\n\t\t\"options_1\": \"Python\",\r\n\t\t\"options_2\": \"Car\",\r\n\t\t\"options_3\": \"JavaScript\",\r\n\t\t\"options_4\": \"Apple\",\r\n\t\t\"correct_ans\": [\r\n\t\t\t\"options_1\",\r\n            \"options_2\"\r\n\t\t]\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/mcq-questions/1/edit/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n\t\t\"question\": \"Whichwedfrg of the following are programming languages multiple?\",\r\n\t\t\"options_1\": \"Python\",\r\n\t\t\"options_2\": \"Car\",\r\n\t\t\"options_3\": \"JavaScript\",\r\n\t\t\"options_4\": \"Apple\",\r\n\t\t\"correct_ans\": [\r\n\t\t\t\"options_1\",\r\n            \"options_2\"\r\n\t\t]\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/mcq-questions/1/edit/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n\t\t\"question\": \"Whichwedfrg of the following are programming languages multiple?\",\r\n\t\t\"options_1\": \"Python\",\r\n\t\t\"options_2\": \"Car\",\r\n\t\t\"options_3\": \"JavaScript\",\r\n\t\t\"options_4\": \"Apple\",\r\n\t\t\"correct_ans\": [\r\n\t\t\t\"options_1\",\r\n            \"options_2\"\r\n\t\t]\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

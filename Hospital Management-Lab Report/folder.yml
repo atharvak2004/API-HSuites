@@ -1,0 +1,7 @@
+info:
+  name: Hospital Management/Lab Report
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

@@ -1,0 +1,56 @@
+info:
+  name: Update Status
+  type: http
+  seq: 5
+  tags:
+    - Assessments/Login & Registration
+
+http:
+  method: PUT
+  url: "{{baseUrl}}assessments/update-status/"
+  body:
+    type: json
+    data: '"{\r\n    \"user_id\": 26,\r\n    \"status\": \"Inactive\"\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/update-status/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n    \"user_id\": 26,\r\n    \"status\": \"Inactive\"\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/update-status/"
+      method: PUT
+      body:
+        type: json
+        data: '"{\r\n    \"user_id\": 26,\r\n    \"status\": \"Inactive\"\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

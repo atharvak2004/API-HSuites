@@ -1,0 +1,97 @@
+info:
+  name: Post Pharmacy bill
+  type: http
+  seq: 3
+  tags:
+    - Hospital Management/Pharmacist
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/pharmacy-bill/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"patient_id\": 49,\r\n  \"user_id\": 13,\r\n  \"prescription_id\": 110,\r\n  \"date_issued\": \"2025-07-17\",\r\n  \"medical_items\": [\r\n    {\r\n      \"name\": \"wf\",\r\n      \"dosage\": \"60mg\",\r\n      \"amount\": 56,\r\n      \"duration\": \"4days\",\r\n      \"quantity\": 16\r\n    }\r\n  ]\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/pharmacy-bill/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"patient_id\": 49,\r\n  \"user_id\": 13,\r\n  \"prescription_id\": 110,\r\n  \"date_issued\": \"2025-07-17\",\r\n  \"medical_items\": [\r\n    {\r\n      \"name\": \"wf\",\r\n      \"dosage\": \"60mg\",\r\n      \"amount\": 56,\r\n      \"duration\": \"4days\",\r\n      \"quantity\": 16\r\n    }\r\n  ]\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "Pharmacy Bill created successfully.",
+          	"data": {
+          		"id": 28,
+          		"date_issued": "2025-07-17",
+          		"medical_items": [
+          			{
+          				"medicine_stock_id": 6,
+          				"name": "Paracetamol",
+          				"dosage": "500mg",
+          				"amount": 10,
+          				"duration": "5 days",
+          				"quantity": 2
+          			}
+          		],
+          		"total_amount": "20.00",
+          		"payment_status": "unpaid",
+          		"payment_mode": null,
+          		"payment_date": null,
+          		"hospital": 2,
+          		"patient": 37,
+          		"doctor": 16
+          	},
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210"
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/pharmacy-bill/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"patient_id\": 49,\r\n  \"user_id\": 13,\r\n  \"prescription_id\": 110,\r\n  \"date_issued\": \"2025-07-17\",\r\n  \"medical_items\": [\r\n    {\r\n      \"name\": \"wf\",\r\n      \"dosage\": \"60mg\",\r\n      \"amount\": 56,\r\n      \"duration\": \"4days\",\r\n      \"quantity\": 16\r\n    }\r\n  ]\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,65 @@
+info:
+  name: Post Pharmacy medicine stock
+  type: http
+  seq: 3
+  tags:
+    - Hospital Management/Pharmacist/Pharmacy Stock
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/pharmacy/medicine-stock/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"medicine\": 2,\r\n  \"batch_number\": \"BN0006\",\r\n  \"expiry_date\": \"2027-12-31\",\r\n  \"quantity\": 1000,\r\n  \"purchase_price\": 44.50,\r\n  \"selling_price\": 45.00\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/pharmacy/medicine-stock/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"medicine\": 2,\r\n  \"batch_number\": \"BN0006\",\r\n  \"expiry_date\": \"2027-12-31\",\r\n  \"quantity\": 1000,\r\n  \"purchase_price\": 44.50,\r\n  \"selling_price\": 45.00\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/pharmacy/medicine-stock/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"medicine\": 2,\r\n  \"batch_number\": \"BN0006\",\r\n  \"expiry_date\": \"2027-12-31\",\r\n  \"quantity\": 1000,\r\n  \"purchase_price\": 44.50,\r\n  \"selling_price\": 45.00\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

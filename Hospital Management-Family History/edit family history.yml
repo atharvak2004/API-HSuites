@@ -1,0 +1,65 @@
+info:
+  name: edit family history
+  type: http
+  seq: 2
+  tags:
+    - Hospital Management/Family History
+
+http:
+  method: PUT
+  url: "{{baseUrl}}hospital/family-history/"
+  headers:
+    - name: Hospital-Id
+      value: HID00001
+  body:
+    type: json
+    data: '"{\r\n  \"id\": 2,\r\n  \"relation\": \"Mother\",\r\n  \"name\": \"Vina Sharma\",\r\n  \"disease\": \"Diabetes\",\r\n  \"description\": \"Updated family history details\",\r\n  \"period\": \"2018 - Present\"\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/family-history/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"{\r\n  \"id\": 2,\r\n  \"relation\": \"Mother\",\r\n  \"name\": \"Vina Sharma\",\r\n  \"disease\": \"Diabetes\",\r\n  \"description\": \"Updated family history details\",\r\n  \"period\": \"2018 - Present\"\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/family-history/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"{\r\n  \"id\": 2,\r\n  \"relation\": \"Mother\",\r\n  \"name\": \"Vina Sharma\",\r\n  \"disease\": \"Diabetes\",\r\n  \"description\": \"Updated family history details\",\r\n  \"period\": \"2018 - Present\"\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,56 @@
+info:
+  name: Upload Book Details
+  type: http
+  seq: 1
+  tags:
+    - Books details
+
+http:
+  method: POST
+  url: "{{baseUrl}}books/book-details/"
+  body:
+    type: json
+    data: '"{\r\n  \"user_id\": 1,\r\n  \"book\": 1,\r\n  \"code\": \"f01\",\r\n  \"description\": \"Sample description for F01 code\",\r\n  \"sub_descriptions\": [\r\n    {\r\n      \"code\": \"F01.0\",\r\n      \"sub_description\": \"Sub-description related to F01.0\",\r\n      \"sub_data\": \"This is a sample note about F01.0\"\r\n    }\r\n  ]\r\n}\r\n\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}books/book-details/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"user_id\": 1,\r\n  \"book\": 1,\r\n  \"code\": \"f01\",\r\n  \"description\": \"Sample description for F01 code\",\r\n  \"sub_descriptions\": [\r\n    {\r\n      \"code\": \"F01.0\",\r\n      \"sub_description\": \"Sub-description related to F01.0\",\r\n      \"sub_data\": \"This is a sample note about F01.0\"\r\n    }\r\n  ]\r\n}\r\n\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}books/book-details/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"user_id\": 1,\r\n  \"book\": 1,\r\n  \"code\": \"f01\",\r\n  \"description\": \"Sample description for F01 code\",\r\n  \"sub_descriptions\": [\r\n    {\r\n      \"code\": \"F01.0\",\r\n      \"sub_description\": \"Sub-description related to F01.0\",\r\n      \"sub_data\": \"This is a sample note about F01.0\"\r\n    }\r\n  ]\r\n}\r\n\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,146 @@
+info:
+  name: Post IPD
+  type: http
+  seq: 7
+  tags:
+    - Hospital Management/IPD
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/ipd/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n  \"patient\": 26,\r\n  \"bill_category\": \"General Ward10\",\r\n  \"department\": \"Orthopedics\",\r\n  \"description\": \"Fracture case xcvbnm- initial admission\",\r\n  // \"bed\": 1,\r\n  \"admitted_doctor\": 16,\r\n  // \"admit_date\": \"2025-07-12\",\r\n  \"patient_type\": \"mlc\",\r\n  \"guardian_relation\": \"Father\",\r\n  \"guardian_name\": \"Rajesh Sharma\",\r\n  \"guardian_mobile\": \"9876543210\",\r\n  \"police_station_name\": \"Shivajinagar PS\",\r\n  \"informed_on\": \"2025-07-12\",\r\n  \"injury_details\": \"Head injury due to accident\",\r\n  \"incident_datetime\": \"2025-07-11T17:30:00Z\",\r\n  \"mlc_number\": \"MLC-12345\",\r\n  \"mlc_type\": \"accident\"\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/ipd/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"patient\": 26,\r\n  \"bill_category\": \"General Ward10\",\r\n  \"department\": \"Orthopedics\",\r\n  \"description\": \"Fracture case xcvbnm- initial admission\",\r\n  // \"bed\": 1,\r\n  \"admitted_doctor\": 16,\r\n  // \"admit_date\": \"2025-07-12\",\r\n  \"patient_type\": \"mlc\",\r\n  \"guardian_relation\": \"Father\",\r\n  \"guardian_name\": \"Rajesh Sharma\",\r\n  \"guardian_mobile\": \"9876543210\",\r\n  \"police_station_name\": \"Shivajinagar PS\",\r\n  \"informed_on\": \"2025-07-12\",\r\n  \"injury_details\": \"Head injury due to accident\",\r\n  \"incident_datetime\": \"2025-07-11T17:30:00Z\",\r\n  \"mlc_number\": \"MLC-12345\",\r\n  \"mlc_type\": \"accident\"\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "IPD record created successfully",
+          	"data": {
+          		"id": 19,
+          		"patient": 26,
+          		"patient_details": {
+          			"id": 26,
+          			"known_allergies": [
+          				{
+          					"id": 43,
+          					"name": "Peanuts",
+          					"description": "Severe allergic reaction",
+          					"hospital": 2
+          				},
+          				{
+          					"id": 45,
+          					"name": "Peanuts",
+          					"description": "Severe afghllergic reaction",
+          					"hospital": 2
+          				},
+          				{
+          					"id": 47,
+          					"name": "eq",
+          					"description": "ewf",
+          					"hospital": 2
+          				},
+          				{
+          					"id": 48,
+          					"name": "wef",
+          					"description": "wef",
+          					"hospital": 2
+          				}
+          			],
+          			"age": 22,
+          			"patient_id": "PA00026",
+          			"full_name": "Gayatri rajguru10",
+          			"gender": "Female",
+          			"dob": "2002-07-25",
+          			"relative_name": "Suresh Pafghjtil",
+          			"contact_number": "9876543210",
+          			"email": "rahul@example.com",
+          			"emergency_contact_number": "9988776655",
+          			"address": "Pune, Maharashtra",
+          			"blood_group": "B+",
+          			"medical_history": "Diabetic patient",
+          			"visit_count": 11,
+          			"date": "2025-06-20T16:57:36.510416+05:30",
+          			"is_active_patient": false,
+          			"hospital": 2
+          		},
+          		"admitted_doctor": 16,
+          		"active_doctor": 16,
+          		"transfer_doctor": null,
+          		"bed": null,
+          		"doctor_history": [],
+          		"bill_category": "General Ward10",
+          		"description": "Fracture case xcvbnm- initial admission",
+          		"department": "Orthopedics",
+          		"entry_date": "2025-07-14T11:39:48.622002+05:30",
+          		"admit_date": null,
+          		"patient_type": "mlc",
+          		"guardian_relation": "Father",
+          		"guardian_name": "Rajesh Sharma",
+          		"guardian_mobile": "9876543210",
+          		"police_station_name": "Shivajinagar PS",
+          		"informed_on": "2025-07-12",
+          		"injury_details": "Head injury due to accident",
+          		"incident_datetime": "2025-07-11T23:00:00+05:30",
+          		"mlc_number": "MLC-12345",
+          		"mlc_type": "accident",
+          		"hospital": 2
+          	},
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210"
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/ipd/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n  \"patient\": 26,\r\n  \"bill_category\": \"General Ward10\",\r\n  \"department\": \"Orthopedics\",\r\n  \"description\": \"Fracture case xcvbnm- initial admission\",\r\n  // \"bed\": 1,\r\n  \"admitted_doctor\": 16,\r\n  // \"admit_date\": \"2025-07-12\",\r\n  \"patient_type\": \"mlc\",\r\n  \"guardian_relation\": \"Father\",\r\n  \"guardian_name\": \"Rajesh Sharma\",\r\n  \"guardian_mobile\": \"9876543210\",\r\n  \"police_station_name\": \"Shivajinagar PS\",\r\n  \"informed_on\": \"2025-07-12\",\r\n  \"injury_details\": \"Head injury due to accident\",\r\n  \"incident_datetime\": \"2025-07-11T17:30:00Z\",\r\n  \"mlc_number\": \"MLC-12345\",\r\n  \"mlc_type\": \"accident\"\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

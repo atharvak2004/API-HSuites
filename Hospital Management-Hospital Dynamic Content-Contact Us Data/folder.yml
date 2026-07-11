@@ -1,0 +1,7 @@
+info:
+  name: Hospital Management/Hospital Dynamic Content/Contact Us Data
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

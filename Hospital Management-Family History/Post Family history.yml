@@ -1,0 +1,65 @@
+info:
+  name: Post Family history
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Family History
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/family-history/"
+  headers:
+    - name: Hospital-Id
+      value: HID00001
+  body:
+    type: json
+    data: '"{\r\n    \"patient\": 2,\r\n    \"relation\": \"Sisterefr\",\r\n    \"name\": \"Savita sharmwefrga\",\r\n    \"disease\": \"Hypertension\",\r\n    \"description\": \"test\",\r\n    \"period\": \"2015 - Present\"\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/family-history/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"{\r\n    \"patient\": 2,\r\n    \"relation\": \"Sisterefr\",\r\n    \"name\": \"Savita sharmwefrga\",\r\n    \"disease\": \"Hypertension\",\r\n    \"description\": \"test\",\r\n    \"period\": \"2015 - Present\"\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/family-history/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"{\r\n    \"patient\": 2,\r\n    \"relation\": \"Sisterefr\",\r\n    \"name\": \"Savita sharmwefrga\",\r\n    \"disease\": \"Hypertension\",\r\n    \"description\": \"test\",\r\n    \"period\": \"2015 - Present\"\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

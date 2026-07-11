@@ -1,0 +1,56 @@
+info:
+  name: Mcq Quiz result
+  type: http
+  seq: 13
+  tags:
+    - Assessments/MCQ Assessments
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/submit-mcq-quiz/"
+  body:
+    type: json
+    data: '"{\r\n  \"user_id\": 2,\r\n  \"quiz_id\": 10,\r\n  \"response\": [\r\n    { \"question_id\": 27, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 33, \"user_answer\": [\"options_3\"] },\r\n    { \"question_id\": 34, \"user_answer\": [\"options_1\"] },\r\n    { \"question_id\": 54, \"user_answer\": [\"options_3\"] },\r\n    { \"question_id\": 31, \"user_answer\": [\"options_4\"] },\r\n    { \"question_id\": 25, \"user_answer\": [\"options_3\"] },\r\n    { \"question_id\": 51, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 52, \"user_answer\": [\"options_1\"] },\r\n    { \"question_id\": 47, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 37, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 42, \"user_answer\": [] },\r\n    { \"question_id\": 23, \"user_answer\": [] },\r\n    { \"question_id\": 30, \"user_answer\": [] },\r\n    { \"question_id\": 24, \"user_answer\": [] },\r\n    { \"question_id\": 35, \"user_answer\": [] },\r\n    { \"question_id\": 46, \"user_answer\": [] },\r\n    { \"question_id\": 40, \"user_answer\": [] },\r\n    { \"question_id\": 53, \"user_answer\": [] },\r\n    { \"question_id\": 41, \"user_answer\": [] },\r\n    { \"question_id\": 50, \"user_answer\": [] }\r\n  ]\r\n}\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/submit-mcq-quiz/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"user_id\": 2,\r\n  \"quiz_id\": 10,\r\n  \"response\": [\r\n    { \"question_id\": 27, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 33, \"user_answer\": [\"options_3\"] },\r\n    { \"question_id\": 34, \"user_answer\": [\"options_1\"] },\r\n    { \"question_id\": 54, \"user_answer\": [\"options_3\"] },\r\n    { \"question_id\": 31, \"user_answer\": [\"options_4\"] },\r\n    { \"question_id\": 25, \"user_answer\": [\"options_3\"] },\r\n    { \"question_id\": 51, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 52, \"user_answer\": [\"options_1\"] },\r\n    { \"question_id\": 47, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 37, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 42, \"user_answer\": [] },\r\n    { \"question_id\": 23, \"user_answer\": [] },\r\n    { \"question_id\": 30, \"user_answer\": [] },\r\n    { \"question_id\": 24, \"user_answer\": [] },\r\n    { \"question_id\": 35, \"user_answer\": [] },\r\n    { \"question_id\": 46, \"user_answer\": [] },\r\n    { \"question_id\": 40, \"user_answer\": [] },\r\n    { \"question_id\": 53, \"user_answer\": [] },\r\n    { \"question_id\": 41, \"user_answer\": [] },\r\n    { \"question_id\": 50, \"user_answer\": [] }\r\n  ]\r\n}\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/submit-mcq-quiz/"
+      method: POST
+      body:
+        type: json
+        data: '"{\r\n  \"user_id\": 2,\r\n  \"quiz_id\": 10,\r\n  \"response\": [\r\n    { \"question_id\": 27, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 33, \"user_answer\": [\"options_3\"] },\r\n    { \"question_id\": 34, \"user_answer\": [\"options_1\"] },\r\n    { \"question_id\": 54, \"user_answer\": [\"options_3\"] },\r\n    { \"question_id\": 31, \"user_answer\": [\"options_4\"] },\r\n    { \"question_id\": 25, \"user_answer\": [\"options_3\"] },\r\n    { \"question_id\": 51, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 52, \"user_answer\": [\"options_1\"] },\r\n    { \"question_id\": 47, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 37, \"user_answer\": [\"options_2\"] },\r\n    { \"question_id\": 42, \"user_answer\": [] },\r\n    { \"question_id\": 23, \"user_answer\": [] },\r\n    { \"question_id\": 30, \"user_answer\": [] },\r\n    { \"question_id\": 24, \"user_answer\": [] },\r\n    { \"question_id\": 35, \"user_answer\": [] },\r\n    { \"question_id\": 46, \"user_answer\": [] },\r\n    { \"question_id\": 40, \"user_answer\": [] },\r\n    { \"question_id\": 53, \"user_answer\": [] },\r\n    { \"question_id\": 41, \"user_answer\": [] },\r\n    { \"question_id\": 50, \"user_answer\": [] }\r\n  ]\r\n}\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

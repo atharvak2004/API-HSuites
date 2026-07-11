@@ -1,0 +1,71 @@
+info:
+  name: update-profile
+  type: http
+  seq: 6
+  tags:
+    - Accounts
+
+http:
+  method: PUT
+  url: "{{baseUrl}}accounts/update-profile/"
+  headers:
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFkbWluMUBwcnVzaGFsLmNvbSIsImV4cCI6MTc0ODU3OTczMX0.pcQ7k9dk2ejOV40dI8ElRMoHIWM1F4gXG6tktfZWaik
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: '"{\r\n    \"username\": \"Admin\",\r\n\t\"email\": \"admin1@prushal.com\"\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}accounts/update-profile/"
+      method: PUT
+      headers:
+        - name: Authorization
+          value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFkbWluMUBwcnVzaGFsLmNvbSIsImV4cCI6MTc0ODU3OTczMX0.pcQ7k9dk2ejOV40dI8ElRMoHIWM1F4gXG6tktfZWaik
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: '"{\r\n    \"username\": \"Admin\",\r\n\t\"email\": \"admin1@prushal.com\"\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}accounts/update-profile/"
+      method: PUT
+      headers:
+        - name: Authorization
+          value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFkbWluMUBwcnVzaGFsLmNvbSIsImV4cCI6MTc0ODU3OTczMX0.pcQ7k9dk2ejOV40dI8ElRMoHIWM1F4gXG6tktfZWaik
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: '"{\r\n    \"username\": \"Admin\",\r\n\t\"email\": \"admin1@prushal.com\"\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

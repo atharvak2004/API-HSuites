@@ -1,0 +1,100 @@
+info:
+  name: Post medicine
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Medicine
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/medicine/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"[\r\n  {\r\n    \"pharmacy_medicine\":3,\r\n    \"dosage_amount\": 500,\r\n    \"dosage_unit\": \"mg\",\r\n    \"frequency\": \"twice_daily\",\r\n    \"till_date\": \"2025-07-10\",\r\n    \"added_by\": 16,\r\n    \"clinical_note\": 34\r\n  }\r\n]\r\n"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/medicine/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"[\r\n  {\r\n    \"pharmacy_medicine\":3,\r\n    \"dosage_amount\": 500,\r\n    \"dosage_unit\": \"mg\",\r\n    \"frequency\": \"twice_daily\",\r\n    \"till_date\": \"2025-07-10\",\r\n    \"added_by\": 16,\r\n    \"clinical_note\": 34\r\n  }\r\n]\r\n"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+          	"message": "Medicine added successfully",
+          	"data": [
+          		{
+          			"id": 47,
+          			"pharmacy_medicine": 3,
+          			"pharmacy_medicine_detail": {
+          				"id": 3,
+          				"medicine_name": "Desloratadine",
+          				"medicine_type": "tablet",
+          				"medicine_unit": "units",
+          				"manufacturer": "red uni",
+          				"is_narcotic": false,
+          				"description": "for spider bite",
+          				"hospital": 2
+          			},
+          			"dosage": "500mg",
+          			"dosage_amount": 500,
+          			"dosage_unit": "mg",
+          			"frequency": "twice_daily",
+          			"till_date": "2025-07-10",
+          			"added_by": 16,
+          			"clinical_note": 34,
+          			"hospital": 2
+          		}
+          	],
+          	"hospital": {
+          		"id": 2,
+          		"hospital_id": "HID00002",
+          		"name": "Sancheti Hospital",
+          		"address": "Shivajinagar, Pune",
+          		"owner": "Dr. Sameer Patil",
+          		"contact": "9876543210"
+          	}
+          }
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/medicine/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"[\r\n  {\r\n    \"pharmacy_medicine\":3,\r\n    \"dosage_amount\": 500,\r\n    \"dosage_unit\": \"mg\",\r\n    \"frequency\": \"twice_daily\",\r\n    \"till_date\": \"2025-07-10\",\r\n    \"added_by\": 16,\r\n    \"clinical_note\": 34\r\n  }\r\n]\r\n"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

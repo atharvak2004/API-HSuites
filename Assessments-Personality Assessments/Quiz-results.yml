@@ -1,0 +1,71 @@
+info:
+  name: Quiz-results
+  type: http
+  seq: 10
+  tags:
+    - Assessments/Personality Assessments
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/quiz-results/"
+  headers:
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InNlamFsYmhhcmFtYmUyMDAzQGdtYWlsLmNvbSIsImV4cCI6MTc0NDI3NzEzN30.xoAnp740POBsabfQcs6jYeModvQubOOTvdBNYjSfTt8
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: '"{\r\n    \"user_id\": 1,\r\n    \"quiz_id\": 2,\r\n    \"answers\": [\r\n        {\"question_id\": 1, \"selected_category\": \"category_2\"},\r\n        {\"question_id\": 4, \"selected_category\": \"category_2\"},\r\n        {\"question_id\": 5, \"selected_category\": \"category_2\"},\r\n        {\"question_id\": 6, \"selected_category\": \"category_1\"}\r\n    ]\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/quiz-results/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InNlamFsYmhhcmFtYmUyMDAzQGdtYWlsLmNvbSIsImV4cCI6MTc0NDI3NzEzN30.xoAnp740POBsabfQcs6jYeModvQubOOTvdBNYjSfTt8
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: '"{\r\n    \"user_id\": 1,\r\n    \"quiz_id\": 2,\r\n    \"answers\": [\r\n        {\"question_id\": 1, \"selected_category\": \"category_2\"},\r\n        {\"question_id\": 4, \"selected_category\": \"category_2\"},\r\n        {\"question_id\": 5, \"selected_category\": \"category_2\"},\r\n        {\"question_id\": 6, \"selected_category\": \"category_1\"}\r\n    ]\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/quiz-results/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJlbWFpbCI6InNlamFsYmhhcmFtYmUyMDAzQGdtYWlsLmNvbSIsImV4cCI6MTc0NDI3NzEzN30.xoAnp740POBsabfQcs6jYeModvQubOOTvdBNYjSfTt8
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: '"{\r\n    \"user_id\": 1,\r\n    \"quiz_id\": 2,\r\n    \"answers\": [\r\n        {\"question_id\": 1, \"selected_category\": \"category_2\"},\r\n        {\"question_id\": 4, \"selected_category\": \"category_2\"},\r\n        {\"question_id\": 5, \"selected_category\": \"category_2\"},\r\n        {\"question_id\": 6, \"selected_category\": \"category_1\"}\r\n    ]\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,137 @@
+info:
+  name: Post Doctor profile
+  type: http
+  seq: 12
+  tags:
+    - Hospital Management/HMS User
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/hmsuser/doctor-profile/create/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: multipart-form
+    data:
+      - name: doctor
+        type: text
+        value: "16"
+      - name: phone_number
+        type: text
+        value: "7894561230"
+      - name: gender
+        type: text
+        value: male
+      - name: dob
+        type: text
+        value: 1985-07-20
+      - name: photo
+        type: file
+        value: []
+      - name: qualification
+        type: text
+        value: MD
+      - name: specialization
+        type: text
+        value: Cardiology
+      - name: experience_years
+        type: text
+        value: "15"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/hmsuser/doctor-profile/create/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: multipart-form
+        data:
+          - name: doctor
+            type: text
+            value: "16"
+          - name: phone_number
+            type: text
+            value: "7894561230"
+          - name: gender
+            type: text
+            value: male
+          - name: dob
+            type: text
+            value: 1985-07-20
+          - name: photo
+            type: file
+            value: []
+          - name: qualification
+            type: text
+            value: MD
+          - name: specialization
+            type: text
+            value: Cardiology
+          - name: experience_years
+            type: text
+            value: "15"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/hmsuser/doctor-profile/create/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: multipart-form
+        data:
+          - name: doctor
+            type: text
+            value: "16"
+          - name: phone_number
+            type: text
+            value: "7894561230"
+          - name: gender
+            type: text
+            value: male
+          - name: dob
+            type: text
+            value: 1985-07-20
+          - name: photo
+            type: file
+            value: []
+          - name: qualification
+            type: text
+            value: MD
+          - name: specialization
+            type: text
+            value: Cardiology
+          - name: experience_years
+            type: text
+            value: "15"
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

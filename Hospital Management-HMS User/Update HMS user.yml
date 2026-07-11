@@ -1,0 +1,65 @@
+info:
+  name: Update HMS user
+  type: http
+  seq: 5
+  tags:
+    - Hospital Management/HMS User
+
+http:
+  method: PUT
+  url: "{{baseUrl}}hospital/hmsuser/update/15/"
+  headers:
+    - name: Hospital-Id
+      value: HID00002
+  body:
+    type: json
+    data: '"{\r\n    \"name\": \"Dr. Karan2 Mishra\",\r\n\t\"designation\": \"doctor\",\r\n\t\"email\": \"karan2@example.com\"\r\n}"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/hmsuser/update/15/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    \"name\": \"Dr. Karan2 Mishra\",\r\n\t\"designation\": \"doctor\",\r\n\t\"email\": \"karan2@example.com\"\r\n}"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/hmsuser/update/15/"
+      method: PUT
+      headers:
+        - name: Hospital-Id
+          value: HID00002
+      body:
+        type: json
+        data: '"{\r\n    \"name\": \"Dr. Karan2 Mishra\",\r\n\t\"designation\": \"doctor\",\r\n\t\"email\": \"karan2@example.com\"\r\n}"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

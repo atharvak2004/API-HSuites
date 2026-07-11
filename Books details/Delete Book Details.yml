@@ -1,0 +1,56 @@
+info:
+  name: Delete Book Details
+  type: http
+  seq: 4
+  tags:
+    - Books details
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}books/book-details/f01"
+  body:
+    type: json
+    data: '""'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}books/book-details/f01"
+      method: DELETE
+      body:
+        type: json
+        data: '""'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}books/book-details/f01"
+      method: DELETE
+      body:
+        type: json
+        data: '""'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

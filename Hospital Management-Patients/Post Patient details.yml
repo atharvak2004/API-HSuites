@@ -1,0 +1,65 @@
+info:
+  name: Post Patient details
+  type: http
+  seq: 1
+  tags:
+    - Hospital Management/Patients
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/patient-details/"
+  headers:
+    - name: Hospital-Id
+      value: HID00001
+  body:
+    type: json
+    data: '"  {\r\n    \"full_name\": \"Karan Joshi\",\r\n    \"gender\": \"Male\",\r\n    \"dob\": \"1995-07-22\",\r\n    \"relative_name\": \"Mohan Joshi\",\r\n    \"contact_number\": \"9876543219\",\r\n    \"email\": \"karan9@example.com\",\r\n    \"emergency_contact_number\": \"9988776659\",\r\n    \"address\": \"Nagpur, Maharashtra\",\r\n    \"blood_group\": \"A+\",\r\n    \"medical_history\": \"Diabetes\"\r\n  }"'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}hospital/patient-details/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"  {\r\n    \"full_name\": \"Karan Joshi\",\r\n    \"gender\": \"Male\",\r\n    \"dob\": \"1995-07-22\",\r\n    \"relative_name\": \"Mohan Joshi\",\r\n    \"contact_number\": \"9876543219\",\r\n    \"email\": \"karan9@example.com\",\r\n    \"emergency_contact_number\": \"9988776659\",\r\n    \"address\": \"Nagpur, Maharashtra\",\r\n    \"blood_group\": \"A+\",\r\n    \"medical_history\": \"Diabetes\"\r\n  }"'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}hospital/patient-details/"
+      method: POST
+      headers:
+        - name: Hospital-Id
+          value: HID00001
+      body:
+        type: json
+        data: '"  {\r\n    \"full_name\": \"Karan Joshi\",\r\n    \"gender\": \"Male\",\r\n    \"dob\": \"1995-07-22\",\r\n    \"relative_name\": \"Mohan Joshi\",\r\n    \"contact_number\": \"9876543219\",\r\n    \"email\": \"karan9@example.com\",\r\n    \"emergency_contact_number\": \"9988776659\",\r\n    \"address\": \"Nagpur, Maharashtra\",\r\n    \"blood_group\": \"A+\",\r\n    \"medical_history\": \"Diabetes\"\r\n  }"'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

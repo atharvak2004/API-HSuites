@@ -1,0 +1,56 @@
+info:
+  name: Create Therapy
+  type: http
+  seq: 3
+  tags:
+    - Counselling/Therapy
+
+http:
+  method: POST
+  url: "{{baseUrl}}counsellor/therapies/"
+  body:
+    type: json
+    data: "\"{\\r\\n  \\\"counsellor\\\": 93,\\r\\n  \\\"user\\\": 2,\\r\\n  \\\"request_id\\\": 19,\\r\\n  \\\"therapy_title\\\":\\\"Therapy test title name\\\",\\r\\n  \\\"step_1\\\": {\\r\\n    \\\"title\\\": \\\"Initial Assessment\\\",\\r\\n    \\\"description\\\": \\\"Evaluate patient's current condition and gather medical history.\\\"\\r\\n  },\\r\\n  \\\"step_2\\\": {\\r\\n    \\\"title\\\": \\\"Goal Setting\\\",\\r\\n    \\\"description\\\": \\\"Set therapeutic goals based on assessment results.\\\"\\r\\n  },\\r\\n  \\\"step_3\\\": {\\r\\n    \\\"title\\\": \\\"Treatment Planning\\\",\\r\\n    \\\"description\\\": \\\"Develop a detailed treatment plan tailored to the patient.\\\"\\r\\n  },\\r\\n  \\\"step_4\\\": {\\r\\n    \\\"title\\\": \\\"Patient Education\\\",\\r\\n    \\\"description\\\": \\\"Explain treatment procedures and expected outcomes to patient.\\\"\\r\\n  },\\r\\n  \\\"step_5\\\": {\\r\\n    \\\"title\\\": \\\"Therapy Session 1\\\",\\r\\n    \\\"description\\\": \\\"Begin therapy with initial exercises and techniques.\\\"\\r\\n  },\\r\\n  \\\"step_6\\\": {\\r\\n    \\\"title\\\": \\\"Progress Evaluation\\\",\\r\\n    \\\"description\\\": \\\"Assess patient's response to therapy after first sessions.\\\"\\r\\n  },\\r\\n  \\\"step_7\\\": {\\r\\n    \\\"title\\\": \\\"Adjust Treatment\\\",\\r\\n    \\\"description\\\": \\\"Modify treatment plan based on patient's progress.\\\"\\r\\n  },\\r\\n  \\\"step_8\\\": {\\r\\n    \\\"title\\\": \\\"Therapy Session 2\\\",\\r\\n    \\\"description\\\": \\\"Continue therapy with adjusted exercises.\\\"\\r\\n  },\\r\\n  \\\"step_9\\\": {\\r\\n    \\\"title\\\": \\\"Final Evaluation\\\",\\r\\n    \\\"description\\\": \\\"Evaluate overall progress and determine readiness for discharge.\\\"\\r\\n  },\\r\\n  \\\"step_10\\\": {\\r\\n    \\\"title\\\": \\\"Follow-up Plan\\\",\\r\\n    \\\"description\\\": \\\"Schedule follow-up sessions or home exercises.\\\"\\r\\n  },\\r\\n  \\\"precautions\\\": [3]\\r\\n}\\r\\n\""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}counsellor/therapies/"
+      method: POST
+      body:
+        type: json
+        data: "\"{\\r\\n  \\\"counsellor\\\": 93,\\r\\n  \\\"user\\\": 2,\\r\\n  \\\"request_id\\\": 19,\\r\\n  \\\"therapy_title\\\":\\\"Therapy test title name\\\",\\r\\n  \\\"step_1\\\": {\\r\\n    \\\"title\\\": \\\"Initial Assessment\\\",\\r\\n    \\\"description\\\": \\\"Evaluate patient's current condition and gather medical history.\\\"\\r\\n  },\\r\\n  \\\"step_2\\\": {\\r\\n    \\\"title\\\": \\\"Goal Setting\\\",\\r\\n    \\\"description\\\": \\\"Set therapeutic goals based on assessment results.\\\"\\r\\n  },\\r\\n  \\\"step_3\\\": {\\r\\n    \\\"title\\\": \\\"Treatment Planning\\\",\\r\\n    \\\"description\\\": \\\"Develop a detailed treatment plan tailored to the patient.\\\"\\r\\n  },\\r\\n  \\\"step_4\\\": {\\r\\n    \\\"title\\\": \\\"Patient Education\\\",\\r\\n    \\\"description\\\": \\\"Explain treatment procedures and expected outcomes to patient.\\\"\\r\\n  },\\r\\n  \\\"step_5\\\": {\\r\\n    \\\"title\\\": \\\"Therapy Session 1\\\",\\r\\n    \\\"description\\\": \\\"Begin therapy with initial exercises and techniques.\\\"\\r\\n  },\\r\\n  \\\"step_6\\\": {\\r\\n    \\\"title\\\": \\\"Progress Evaluation\\\",\\r\\n    \\\"description\\\": \\\"Assess patient's response to therapy after first sessions.\\\"\\r\\n  },\\r\\n  \\\"step_7\\\": {\\r\\n    \\\"title\\\": \\\"Adjust Treatment\\\",\\r\\n    \\\"description\\\": \\\"Modify treatment plan based on patient's progress.\\\"\\r\\n  },\\r\\n  \\\"step_8\\\": {\\r\\n    \\\"title\\\": \\\"Therapy Session 2\\\",\\r\\n    \\\"description\\\": \\\"Continue therapy with adjusted exercises.\\\"\\r\\n  },\\r\\n  \\\"step_9\\\": {\\r\\n    \\\"title\\\": \\\"Final Evaluation\\\",\\r\\n    \\\"description\\\": \\\"Evaluate overall progress and determine readiness for discharge.\\\"\\r\\n  },\\r\\n  \\\"step_10\\\": {\\r\\n    \\\"title\\\": \\\"Follow-up Plan\\\",\\r\\n    \\\"description\\\": \\\"Schedule follow-up sessions or home exercises.\\\"\\r\\n  },\\r\\n  \\\"precautions\\\": [3]\\r\\n}\\r\\n\""
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}counsellor/therapies/"
+      method: POST
+      body:
+        type: json
+        data: "\"{\\r\\n  \\\"counsellor\\\": 93,\\r\\n  \\\"user\\\": 2,\\r\\n  \\\"request_id\\\": 19,\\r\\n  \\\"therapy_title\\\":\\\"Therapy test title name\\\",\\r\\n  \\\"step_1\\\": {\\r\\n    \\\"title\\\": \\\"Initial Assessment\\\",\\r\\n    \\\"description\\\": \\\"Evaluate patient's current condition and gather medical history.\\\"\\r\\n  },\\r\\n  \\\"step_2\\\": {\\r\\n    \\\"title\\\": \\\"Goal Setting\\\",\\r\\n    \\\"description\\\": \\\"Set therapeutic goals based on assessment results.\\\"\\r\\n  },\\r\\n  \\\"step_3\\\": {\\r\\n    \\\"title\\\": \\\"Treatment Planning\\\",\\r\\n    \\\"description\\\": \\\"Develop a detailed treatment plan tailored to the patient.\\\"\\r\\n  },\\r\\n  \\\"step_4\\\": {\\r\\n    \\\"title\\\": \\\"Patient Education\\\",\\r\\n    \\\"description\\\": \\\"Explain treatment procedures and expected outcomes to patient.\\\"\\r\\n  },\\r\\n  \\\"step_5\\\": {\\r\\n    \\\"title\\\": \\\"Therapy Session 1\\\",\\r\\n    \\\"description\\\": \\\"Begin therapy with initial exercises and techniques.\\\"\\r\\n  },\\r\\n  \\\"step_6\\\": {\\r\\n    \\\"title\\\": \\\"Progress Evaluation\\\",\\r\\n    \\\"description\\\": \\\"Assess patient's response to therapy after first sessions.\\\"\\r\\n  },\\r\\n  \\\"step_7\\\": {\\r\\n    \\\"title\\\": \\\"Adjust Treatment\\\",\\r\\n    \\\"description\\\": \\\"Modify treatment plan based on patient's progress.\\\"\\r\\n  },\\r\\n  \\\"step_8\\\": {\\r\\n    \\\"title\\\": \\\"Therapy Session 2\\\",\\r\\n    \\\"description\\\": \\\"Continue therapy with adjusted exercises.\\\"\\r\\n  },\\r\\n  \\\"step_9\\\": {\\r\\n    \\\"title\\\": \\\"Final Evaluation\\\",\\r\\n    \\\"description\\\": \\\"Evaluate overall progress and determine readiness for discharge.\\\"\\r\\n  },\\r\\n  \\\"step_10\\\": {\\r\\n    \\\"title\\\": \\\"Follow-up Plan\\\",\\r\\n    \\\"description\\\": \\\"Schedule follow-up sessions or home exercises.\\\"\\r\\n  },\\r\\n  \\\"precautions\\\": [3]\\r\\n}\\r\\n\""
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""

@@ -1,0 +1,7 @@
+info:
+  name: Assessments/Personality Assessments/Treatment
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

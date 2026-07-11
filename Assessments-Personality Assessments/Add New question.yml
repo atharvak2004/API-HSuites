@@ -1,0 +1,56 @@
+info:
+  name: Add New question
+  type: http
+  seq: 5
+  tags:
+    - Assessments/Personality Assessments
+
+http:
+  method: POST
+  url: "{{baseUrl}}assessments/new-quiz/"
+  body:
+    type: json
+    data: '"[\r\n  {\r\n    // \"option_1\": \"Berdfghjlin\",\r\n    // \"option_2\": \"Parrtyklklkis\",\r\n    \"option_3\": \"Romwertrrrrrrrre\",\r\n    \"option_4\": \"Vienna\",\r\n    \"quiz_id\": 1\r\n  }\r\n] \r\n  "'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}assessments/new-quiz/"
+      method: POST
+      body:
+        type: json
+        data: '"[\r\n  {\r\n    // \"option_1\": \"Berdfghjlin\",\r\n    // \"option_2\": \"Parrtyklklkis\",\r\n    \"option_3\": \"Romwertrrrrrrrre\",\r\n    \"option_4\": \"Vienna\",\r\n    \"quiz_id\": 1\r\n  }\r\n] \r\n  "'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 404 Response
+    description: Failure
+    request:
+      url: "{{baseUrl}}assessments/new-quiz/"
+      method: POST
+      body:
+        type: json
+        data: '"[\r\n  {\r\n    // \"option_1\": \"Berdfghjlin\",\r\n    // \"option_2\": \"Parrtyklklkis\",\r\n    \"option_3\": \"Romwertrrrrrrrre\",\r\n    \"option_4\": \"Vienna\",\r\n    \"quiz_id\": 1\r\n  }\r\n] \r\n  "'
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
