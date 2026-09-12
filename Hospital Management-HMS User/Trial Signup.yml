@@ -1,0 +1,32 @@
+info:
+  name: Trial Signup
+  type: http
+  seq: 14
+
+http:
+  method: POST
+  url: "{{baseUrl}}hospital/trial-signup/"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Rajesh Sharma",
+        "designation": "Owner",
+        "mobile_number": "9765208456",
+        "business_email": "m19.atharva.kadam@gmail.com",
+        "country": "India",
+        "city": "Pune",
+        "business_name": "CityCare Multispeciality Clinic",
+        "business_type": "multi_specialty_hospital",
+        "website_url": "https://citycareclinic.com",
+        "remarks": "Interested in a 30-day trial before onboarding full staff.",
+        "service_type": ["opd", "ipd"]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

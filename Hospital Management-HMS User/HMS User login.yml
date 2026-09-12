@@ -13,7 +13,11 @@ http:
       value: HID00002
   body:
     type: json
-    data: '"{\r\n    \"email\": \"devi@gmail.com\",\r\n    \"password\": \"password\"\r\n}\r\n"'
+    data: |-
+      {
+        "email": "dev.atharva.kadam@gmail.com",
+        "password": "tgvc46oUgr"
+      }
   auth: inherit
 
 settings:
@@ -21,6 +25,7 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 examples:
   - name: 200 Response
