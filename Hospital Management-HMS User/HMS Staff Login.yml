@@ -5,7 +5,12 @@ info:
 
 http:
   method: POST
-  url: hmsuser/login/
+  url: "{{baseUrl}}hospital/hmsuser/login/"
+  body:
+    type: json
+    data: |-
+      {"email": "m19.atharva.kadam@gmail.com", 
+       "password": "YNYPqRe6QG"}
   auth: inherit
 
 settings:
